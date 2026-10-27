@@ -1,0 +1,14 @@
+{
+  "trading_enabled": true,
+  "mode": "paper",
+  "watchlist": ["SPY", "QQQ", "IWM", "DIA"],
+  "strategy": {
+    "fast_sma": 20,
+    "slow_sma": 50
+  },
+  "risk": {
+    "max_trade_usd": 1000,
+    "max_total_exposure_usd": 4000,
+    "max_daily_loss_pct": 2.0
+  }
+}
