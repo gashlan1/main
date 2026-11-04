@@ -6,7 +6,8 @@ description: Operate, review and tune the autonomous Alpaca US-stock/ETF bot in 
 # Trader skill
 
 The bot in `bot/trader.py` runs on a GitHub Actions schedule (`.github/workflows/trade.yml`)
-twice each weekday and trades through Alpaca. All settings live in `config.json`.
+hourly on weekdays during US market hours (it skips with a warning until the Alpaca secrets
+are added) and trades through Alpaca. All settings live in `config.json`.
 
 ## Hard rules (never break these)
 

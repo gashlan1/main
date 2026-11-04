@@ -4,7 +4,7 @@ Three autonomous bots, all **paper/demo by default**, each with hard risk limits
 
 | Bot | Market | Runs on | Code | Settings |
 |---|---|---|---|---|
-| Stocks | US ETFs via Alpaca | GitHub Actions, 2×/weekday | `bot/trader.py` | `config.json` |
+| Stocks | US ETFs via Alpaca | GitHub Actions, hourly in market hours | `bot/trader.py` | `config.json` |
 | Crypto | BTC, ETH, SOL spot via ccxt (Kraken) | GitHub Actions, hourly | `trading/crypto_bot.py` | `config/crypto.json` |
 | Gold | XAUUSD on MetaTrader 5 | Your MT5 terminal / Windows VPS | `mt5/XAUUSD_TrendPullback.mq5` | EA inputs |
 

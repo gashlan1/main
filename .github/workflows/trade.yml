@@ -2,10 +2,10 @@ name: trade
 
 on:
   schedule:
-    # Weekdays, roughly 30 min after the US open and 30 min before the close (UTC).
-    # The bot checks the market clock itself, so DST shifts are harmless.
-    - cron: "45 14 * * 1-5"
-    - cron: "30 19 * * 1-5"
+    # Hourly on weekdays across US market hours (13:00-20:00 UTC covers EST and EDT).
+    # GitHub often starts scheduled runs hours late, so hourly runs make it likely that
+    # some land while the market is open. The bot checks the market clock itself.
+    - cron: "17 13-20 * * 1-5"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -21,7 +21,26 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      configured: ${{ steps.keys.outputs.configured }}
+    steps:
+      - id: keys
+        env:
+          KEY: ${{ secrets.ALPACA_API_KEY }}
+          SECRET: ${{ secrets.ALPACA_SECRET_KEY }}
+        run: |
+          if [ -n "$KEY" ] && [ -n "$SECRET" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Stock bot is idle: add the ALPACA_API_KEY and ALPACA_SECRET_KEY repository secrets to start it."
+          fi
+
   trade:
+    needs: check
+    if: needs.check.outputs.configured == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
