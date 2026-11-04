@@ -1,0 +1,20 @@
+{
+  "trading_enabled": true,
+  "mode": "paper",
+  "exchange": "kraken",
+  "quote": "USD",
+  "symbols": ["BTC/USD", "ETH/USD", "SOL/USD"],
+  "timeframe": "4h",
+  "paper_start_cash": 10000,
+  "fee_pct": 0.26,
+  "slippage_pct": 0.05,
+  "strategy": {
+    "risk_pct": 1.0,
+    "max_position_pct": 25.0
+  },
+  "risk": {
+    "max_open_positions": 3,
+    "max_daily_loss_pct": 3.0,
+    "max_total_exposure_pct": 60.0
+  }
+}

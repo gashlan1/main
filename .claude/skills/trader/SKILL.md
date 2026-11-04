@@ -1,6 +1,6 @@
 ---
 name: trader
-description: Operate, review and tune the autonomous Alpaca trading bot in this repo. Use when asked about trades, performance, risk limits, the watchlist, the strategy, pausing/resuming trading, or switching between paper and live.
+description: Operate, review and tune the autonomous Alpaca US-stock/ETF bot in this repo (bot/trader.py). For crypto use crypto-trader; for gold/MT5 use mt5-gold-trader. Use when asked about trades, performance, risk limits, the watchlist, the strategy, pausing/resuming trading, or switching between paper and live.
 ---
 
 # Trader skill
