@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Senteon · مدارس الصرح الأهلية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Manrope:wght@600;800&display=swap">
+<style>
+:root{
+  --paper:#ffffff;--ink:#1E2329;--ink-2:#4A5058;--rule:#E3DFD9;--card:#FBFAF8;--accent:#A8582A;--accent-ink:#ffffff;--focus:#A8582A;
+}
+@media (prefers-color-scheme: dark){
+  :root{--paper:#15181C;--ink:#ECEAE6;--ink-2:#B4B0AA;--rule:#2C3036;--card:#1C2025;--accent:#D07A45;--accent-ink:#15181C;--focus:#D07A45;}
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink)}
+body{font-family:'IBM Plex Sans Arabic',Tahoma,sans-serif;line-height:1.6;-webkit-text-size-adjust:100%}
+.bar{height:6px;background:var(--accent)}
+.wrap{max-width:880px;margin:0 auto;padding:28px 16px 40px}
+.brand{display:flex;align-items:center;justify-content:space-between;gap:16px;direction:ltr;padding-bottom:20px;border-bottom:2px solid var(--accent)}
+.brand .en{font-family:Manrope,'IBM Plex Sans Arabic',sans-serif}
+.brand .en b{display:block;font-weight:800;font-size:26px;letter-spacing:-.02em;line-height:1}
+.brand .en span{display:block;font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);margin-top:4px}
+.brand .ar{direction:rtl;text-align:right}
+.brand .ar b{display:block;font-size:24px;font-weight:700;line-height:1.1}
+.brand .ar span{display:block;font-size:13px;color:var(--ink-2)}
+.mark{flex:0 0 auto}
+h1{font-size:28px;line-height:1.35;margin:32px 0 6px;font-weight:700;text-wrap:balance}
+.lead{margin:0 0 28px;color:var(--ink-2);font-size:16px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:22px 20px;display:flex;flex-direction:column;gap:10px}
+.card h2{margin:0;font-size:19px;font-weight:700}
+.card p{margin:0;color:var(--ink-2);font-size:15px;flex:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:10px 18px;border-radius:10px;background:var(--accent);color:var(--accent-ink);font-weight:600;font-size:15px;text-decoration:none;align-self:flex-start}
+.btn:hover{filter:brightness(1.06)}
+.btn:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--rule)}
+.meta{font-size:13px;color:var(--ink-2)}
+footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-2);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+@media (max-width:480px){.brand .en b{font-size:22px}.brand .ar b{font-size:20px}.brand .en span{display:none}h1{font-size:23px}}
+</style>
+</head>
+<body>
+<div class="bar"></div>
+<div class="wrap">
+  <div class="brand">
+    <div class="en"><b>Senteon</b><span>Information Technology Solutions</span></div>
+    <svg class="mark" viewBox="0 0 48 48" width="46" height="46" role="img" aria-label="Senteon"><rect x="4" y="6" width="30" height="16" rx="8" fill="currentColor"/><rect x="14" y="26" width="30" height="16" rx="8" fill="var(--accent)"/></svg>
+    <div class="ar"><b>سنتيون</b><span>حلول تقنية المعلومات</span></div>
+  </div>
+
+  <h1>نظام إدارة مدارس الصرح الأهلية</h1>
+  <p class="lead">يسرّ شركة Senteon أن تضع بين أيديكم العرض الفني والمالي ونسخة تجريبية من النظام للمراجعة.</p>
+
+  <div class="cards">
+    <section class="card">
+      <h2>النسخة التجريبية</h2>
+      <p>جرّبوا النظام ببيانات افتراضية، وبدّلوا بين أدوار المستخدمين لمعرفة ما يراه كل دور. لا يُحفظ أي تعديل بعد إغلاق الصفحة.</p>
+      <a class="btn" href="demo/">فتح النسخة التجريبية</a>
+    </section>
+    <section class="card">
+      <h2>العرض الفني والمالي</h2>
+      <p>نطاق النظام، والصلاحيات، وخطة التنفيذ، والدعم الفني، والعرض المالي، والشروط العامة.</p>
+      <span class="meta">ملف PDF، 6 صفحات</span>
+      <a class="btn ghost" href="Senteon-Proposal-Alsarh-Schools.pdf" target="_blank" rel="noopener">فتح العرض</a>
+    </section>
+  </div>
+
+  <footer>
+    <span>Senteon · حلول تقنية المعلومات</span>
+    <span>رابط مؤقت لأغراض المراجعة</span>
+  </footer>
+</div>
+</body>
+</html>
