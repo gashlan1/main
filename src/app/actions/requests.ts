@@ -14,8 +14,6 @@ import {
   updateRequest,
   type RequestPatch,
 } from "@/lib/requests";
-import { SERVICE_TYPES } from "@/lib/firm";
-
 function refresh(requestId?: string) {
   revalidatePath("/");
   if (requestId) revalidatePath(`/requests/${requestId}`);
@@ -113,7 +111,7 @@ export async function createRequestAction(_prev: CreateRequestState, formData: F
       email: get("email") || null,
       phone: get("phone") || null,
       country: get("country") || null,
-      serviceType: serviceType || (SERVICE_TYPES as readonly string[])[0],
+      serviceType: serviceType || null,
       activities: get("activities") || null,
       details: get("details") || null,
       summary: get("summary") || null,

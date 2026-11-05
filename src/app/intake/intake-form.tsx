@@ -91,7 +91,8 @@ export function IntakeForm() {
         <label className="label" htmlFor="serviceType">
           What do you need?
         </label>
-        <select id="serviceType" name="serviceType" className="input">
+        <select id="serviceType" name="serviceType" className="input" defaultValue="">
+          <option value="">Choose…</option>
           {SERVICE_TYPES.map((s) => (
             <option key={s}>{s}</option>
           ))}
