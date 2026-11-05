@@ -32,5 +32,11 @@ Reports: trades, return %, max drawdown %, win rate, profit factor, avg trade, f
 Backtests ignore slippage beyond fees, partial fills and outages. Expect live results to be
 worse. Never present a backtest as a promise of future returns.
 
-Note: this cloud session's network may block exchange APIs. If `--exchange` fails, run the
-backtest from the GitHub Action (workflow_dispatch) or ask the user for a CSV.
+## Full study on real history (preferred)
+
+`research/backtest_runner.py` downloads real data (Binance 4h for BTC/ETH/SOL, Dukascopy H1
+for XAUUSD), runs baseline / in-sample / out-of-sample / buy-and-hold / a 27-cell robustness
+grid, and writes markdown tables. Run it with the **backtest** GitHub Action (Actions → backtest
+→ Run workflow); it commits the report to `research/backtests/<date>/report.md`. Cloud sessions
+can't reach the data hosts directly, so always use the Action for real data. Read the latest
+report before proposing any parameter change.
