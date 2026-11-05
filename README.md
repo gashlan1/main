@@ -5,6 +5,7 @@ The public website for Al-Ahmari Gashlan Legal Consulting's incorporation practi
 ## What it does
 
 - **Website** (`/`, Arabic at `/ar`) — hero with the firm's proposal format, how it works, the three packages and core service prices, why a law firm, Premium Residency, FAQ and contact. **Apply** (`/apply`, `/ar/apply`) creates the request with the chosen package and legal form, gives the visitor an `INQ-YYYY-X-XXXX` reference and notifies staff by email when SMTP is configured. Copy for both languages lives in `src/lib/site-content.ts`.
+- **Option B** (`/b`, Arabic at `/ar/b`) — a second visual treatment of the same homepage copy ("Gilded Survey": navy ground, gold hairline instruments, large serif headlines, the five phases as nodes on a line). Not indexed, and it links back to the current design from a floating switch. The design philosophy is in `docs/design/option-b-gilded-survey.md`; the hero plate is a code-drawn chart in `public/brand/option-b/`. To make it the live homepage, render `HomePageB` from `src/app/page.tsx` and `src/app/ar/page.tsx`.
 - **Queue** (`/portal`) — every request with status, assignee and "waiting on us / with client" chips. Keyword search over everything (clients, companies, countries, activities, emails, notes) and **Ask AI** for natural-language questions such as *"which engineering inquiries are waiting on us?"*.
 - **Workbench** — one page per request:
   - request details and a clear **upload** area (drag-and-drop, per-category buttons: client documents, signed proposal, POA, other);
@@ -71,7 +72,7 @@ src/app/portal/                 queue, request workbench, new request, settings 
 src/app/login                   staff sign-in
 src/app/api/                    uploads, document downloads, AI drafting/search/suggest/extract, proposal PDFs, send, intake
 src/app/actions/                server actions (auth, requests, settings)
-src/components/site/            website header, footer, home page, application form
+src/components/site/            website header, footer, home page (A and B), application form
 src/components/workbench/       header, summary, documents panel, timeline, composer, proposal builder
 src/lib/                        auth/session, requests + full-text search, documents, proposals, PDF (react-pdf), AI (Anthropic SDK), mailer, site copy
 src/db/                         Drizzle schema, libSQL client (tables created on first use), seed
