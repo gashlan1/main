@@ -2,10 +2,10 @@ name: trade
 
 on:
   schedule:
-    # Hourly on weekdays across US market hours (13:00-20:00 UTC covers EST and EDT).
-    # GitHub often starts scheduled runs hours late, so hourly runs make it likely that
-    # some land while the market is open. The bot checks the market clock itself.
-    - cron: "17 13-20 * * 1-5"
+    # Every 30 min on weekdays across US market hours (13:00-20:59 UTC covers EST and
+    # EDT). GitHub starts scheduled runs late and drops some under load, so ask often;
+    # the bot checks the market clock itself and does nothing when the market is closed.
+    - cron: "*/30 13-20 * * 1-5"
   workflow_dispatch:
     inputs:
       dry_run:

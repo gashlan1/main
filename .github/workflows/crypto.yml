@@ -2,7 +2,10 @@ name: crypto
 
 on:
   schedule:
-    - cron: "7 * * * *"   # hourly; 4h signals act on candle close, stops checked every hour
+    # Every 15 min. GitHub starts scheduled runs late and drops some under load (the
+    # hourly schedule produced one run in 8 hours), so ask often; each run takes ~30 s.
+    # Signals act on 4h candle closes; stops are checked on every run.
+    - cron: "*/15 * * * *"
   workflow_dispatch:
     inputs:
       dry_run:
