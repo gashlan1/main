@@ -369,7 +369,7 @@ export const en: SiteContent = {
       },
       {
         name: "Abdullah Salamah Mahdi",
-        role: "Head of Advisory · Co-founder of inc.aglc.sa",
+        role: "Head of Advisory",
         credentials:
           "In Saudi practice since 2011, Abdullah advises family conglomerates, investors and founders from structure to license: group restructurings, acquisitions and joint ventures, commercial contracts, governance and regulatory licensing in Saudi Arabia and the UAE. LL.M., USC Gould School of Law.",
         photo: FOUNDER_PHOTOS.abdullah,
@@ -707,7 +707,7 @@ export const ar: SiteContent = {
       },
       {
         name: "عبدالله سلامة مهدي",
-        role: "رئيس قسم الاستشارات · شريك مؤسس لمنصة inc.aglc.sa",
+        role: "رئيس قسم الاستشارات",
         credentials:
           "يمارس العمل القانوني في المملكة منذ عام 2011، ويرافق المجموعات العائلية الكبرى والمستثمرين ورواد الأعمال من الهيكلة حتى الترخيص: إعادة هيكلة المجموعات، والاستحواذ والمشاريع المشتركة، والعقود التجارية، والحوكمة، والتراخيص النظامية في المملكة العربية السعودية والإمارات. ماجستير في القانون من كلية غولد للقانون بجامعة جنوب كاليفورنيا.",
         photo: FOUNDER_PHOTOS.abdullah,
