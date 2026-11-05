@@ -56,7 +56,7 @@ async function main() {
   const staff: Array<{ name: string; email: string; role: "admin" | "associate"; title: string }> = [
     { name: "Mohamed Gashlan", email: "mag@aglc.sa", role: "admin", title: "Co-Founder & Managing Director" },
     { name: "Majed Alahmari", email: "majed@aglc.sa", role: "admin", title: "Co-Founder & Managing Director" },
-    { name: "Abdullah Salamah", email: "abdullah@aglc.sa", role: "associate", title: "Associate" },
+    { name: "Abdullah Salamah Mahdi", email: "abdullah@aglc.sa", role: "admin", title: "Head of Advisory" },
     { name: "Ibrahem Rezq", email: "iar@aglc.sa", role: "associate", title: "Associate" },
   ];
   if (!staff.some((s) => s.email === adminEmail)) staff.unshift({ name: "Administrator", email: adminEmail, role: "admin", title: "Administrator" });

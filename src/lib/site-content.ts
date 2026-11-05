@@ -140,7 +140,11 @@ const RESOURCE_LINKS = [
 export const TENDERS_URL = "https://tender.aglc.sa";
 export const MAIN_SITE_URL = "https://aglc.sa";
 
-const FOUNDER_PHOTOS = { majed: "/brand/founders/majed-alahmari.jpg", mohamed: "/brand/founders/mohamed-gashlan.jpg" };
+const FOUNDER_PHOTOS = {
+  majed: "/brand/founders/majed-alahmari.jpg",
+  mohamed: "/brand/founders/mohamed-gashlan.jpg",
+  abdullah: "/brand/founders/abdullah-salamah.jpg",
+};
 
 export const en: SiteContent = {
   lang: "en",
@@ -349,7 +353,7 @@ export const en: SiteContent = {
       "Intellectual property and technology",
       "Real estate",
     ],
-    foundersTitle: "Founders",
+    foundersTitle: "Leadership",
     founders: [
       {
         name: "Majed Bin Dhafer Al-Ahmari",
@@ -363,9 +367,16 @@ export const en: SiteContent = {
         credentials: "LLM and LLB, United Kingdom. Corporate and commercial law: governance, capital markets, fintech and international advisory for clients locally and globally.",
         photo: FOUNDER_PHOTOS.mohamed,
       },
+      {
+        name: "Abdullah Salamah Mahdi",
+        role: "Head of Advisory · Co-founder of inc.aglc.sa",
+        credentials:
+          "In Saudi practice since 2011, Abdullah advises family conglomerates, investors and founders from structure to license: group restructurings, acquisitions and joint ventures, commercial contracts, governance and regulatory licensing in Saudi Arabia and the UAE. LL.M., USC Gould School of Law.",
+        photo: FOUNDER_PHOTOS.abdullah,
+      },
     ],
     teamText:
-      "Senior consultants include Abdullah Mahdi Salama (18+ years, M&A and cross-border recovery), Mohamed Said Abbas (19+ years, international commercial arbitration), Hawazen Ahmad Saeed (12+ years, corporate and intellectual property) and Ibrahim Ahmed Rezq (LL.M., University of Miami; formerly legal counsel at Aramco Luberef).",
+      "Senior consultants include Mohamed Said Abbas (19+ years, international commercial arbitration), Hawazen Ahmad Saeed (12+ years, corporate and intellectual property) and Ibrahim Ahmed Rezq (LL.M., University of Miami; formerly legal counsel at Aramco Luberef).",
     mainSiteCta: "Visit aglc.sa",
   },
   proposal: {
@@ -680,7 +691,7 @@ export const ar: SiteContent = {
       "الملكية الفكرية والتقنية",
       "العقارات",
     ],
-    foundersTitle: "المؤسسون",
+    foundersTitle: "القيادة",
     founders: [
       {
         name: "ماجد بن ظافر الأحمري",
@@ -694,8 +705,15 @@ export const ar: SiteContent = {
         credentials: "ماجستير وبكالوريوس في القانون من المملكة المتحدة. متخصص في قانون الشركات والأعمال: الحوكمة وأسواق المال والتقنية المالية والاستشارات الدولية لعملاء محليين ودوليين.",
         photo: FOUNDER_PHOTOS.mohamed,
       },
+      {
+        name: "عبدالله سلامة مهدي",
+        role: "رئيس قسم الاستشارات · شريك مؤسس لمنصة inc.aglc.sa",
+        credentials:
+          "يمارس العمل القانوني في المملكة منذ عام 2011، ويرافق المجموعات العائلية الكبرى والمستثمرين ورواد الأعمال من الهيكلة حتى الترخيص: إعادة هيكلة المجموعات، والاستحواذ والمشاريع المشتركة، والعقود التجارية، والحوكمة، والتراخيص النظامية في المملكة العربية السعودية والإمارات. ماجستير في القانون من كلية غولد للقانون بجامعة جنوب كاليفورنيا.",
+        photo: FOUNDER_PHOTOS.abdullah,
+      },
     ],
-    teamText: "يضم فريق المستشارين عبدالله مهدي سلامة (أكثر من 18 عامًا في الاندماج والاستحواذ واسترداد الأموال عبر الحدود)، ومحمد سعيد عباس (أكثر من 19 عامًا في التحكيم التجاري الدولي)، وهوازن أحمد سعيد (أكثر من 12 عامًا في قانون الشركات والملكية الفكرية)، وإبراهيم أحمد رزق (ماجستير في القانون من جامعة ميامي، ومستشار قانوني سابق في أرامكو لوبريف).",
+    teamText: "يضم فريق المستشارين محمد سعيد عباس (أكثر من 19 عامًا في التحكيم التجاري الدولي)، وهوازن أحمد سعيد (أكثر من 12 عامًا في قانون الشركات والملكية الفكرية)، وإبراهيم أحمد رزق (ماجستير في القانون من جامعة ميامي، ومستشار قانوني سابق في أرامكو لوبريف).",
     mainSiteCta: "زيارة aglc.sa",
   },
   proposal: {

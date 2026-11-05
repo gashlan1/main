@@ -216,11 +216,17 @@ export function HomePage({ content }: { content: SiteContent }) {
             ))}
           </div>
 
-          <div className="mt-16 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+          <div className="mt-16 grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-start">
             <div>
               <h3 className="font-display text-2xl font-semibold">{content.why.firmTitle}</h3>
               <p className="mt-3 text-[15px] leading-relaxed text-white/75">{content.why.firmText}</p>
-              <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">{content.why.practiceTitle}</p>
+              <a href={MAIN_SITE_URL} target="_blank" rel="noreferrer" className="site-btn-light mt-6">
+                {content.why.mainSiteCta}
+                <ExternalLink className="size-4" />
+              </a>
+            </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">{content.why.practiceTitle}</p>
               <ul className="mt-3 flex flex-wrap gap-2">
                 {content.why.practiceAreas.map((area) => (
                   <li key={area} className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[13px] text-white/85">
@@ -228,31 +234,28 @@ export function HomePage({ content }: { content: SiteContent }) {
                   </li>
                 ))}
               </ul>
-              <a href={MAIN_SITE_URL} target="_blank" rel="noreferrer" className="site-btn-light mt-8">
-                {content.why.mainSiteCta}
-                <ExternalLink className="size-4" />
-              </a>
             </div>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">{content.why.foundersTitle}</p>
-              <ul className="mt-4 grid gap-5 sm:grid-cols-2">
-                {content.why.founders.map((f) => (
-                  <li key={f.name} className="rounded-xl border border-white/10 bg-white/5 p-5">
-                    {f.photo ? (
-                      <Image src={f.photo} alt={f.name} width={88} height={88} className="size-[88px] rounded-full border-2 border-gold-500/70 object-cover" />
-                    ) : (
-                      <span className="flex size-[88px] items-center justify-center rounded-full border-2 border-gold-500/70 font-display text-2xl text-gold-300" aria-hidden>
-                        {f.name.split(/\s+/)[0][0]}
-                      </span>
-                    )}
-                    <h4 className="mt-4 font-semibold">{f.name}</h4>
-                    <p className="text-sm text-gold-300">{f.role}</p>
-                    <p className="mt-2 text-[13.5px] leading-relaxed text-white/70">{f.credentials}</p>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-5 text-[14px] leading-relaxed text-white/65">{content.why.teamText}</p>
-            </div>
+          </div>
+
+          <div className="mt-14">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">{content.why.foundersTitle}</p>
+            <ul className="mt-4 grid gap-5 md:grid-cols-3">
+              {content.why.founders.map((f) => (
+                <li key={f.name} className="rounded-xl border border-white/10 bg-white/5 p-5">
+                  {f.photo ? (
+                    <Image src={f.photo} alt={f.name} width={88} height={88} className="size-[88px] rounded-full border-2 border-gold-500/70 object-cover" />
+                  ) : (
+                    <span className="flex size-[88px] items-center justify-center rounded-full border-2 border-gold-500/70 font-display text-2xl text-gold-300" aria-hidden>
+                      {f.name.split(/\s+/)[0][0]}
+                    </span>
+                  )}
+                  <h4 className="mt-4 font-semibold">{f.name}</h4>
+                  <p className="text-sm text-gold-300">{f.role}</p>
+                  <p className="mt-2 text-[13.5px] leading-relaxed text-white/70">{f.credentials}</p>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-5 max-w-3xl text-[14px] leading-relaxed text-white/65">{content.why.teamText}</p>
           </div>
         </div>
       </section>
