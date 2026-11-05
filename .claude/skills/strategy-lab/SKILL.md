@@ -40,3 +40,9 @@ grid, and writes markdown tables. Run it with the **backtest** GitHub Action (Ac
 → Run workflow); it commits the report to `research/backtests/<date>/report.md`. Cloud sessions
 can't reach the data hosts directly, so always use the Action for real data. Read the latest
 report before proposing any parameter change.
+
+The same Action runs `research/daily_trend_study.py` (daily SMA200 trend rule vs buy-and-hold
+vs the pullback bot) into `daily_trend.md`. Findings and the improvement roadmap live in
+`research/IMPROVEMENT_PLAN.md`; update it when a study changes the picture. Rules for any new
+study: fix the rules before running, report every window including the losing ones, flag
+windows with few trades, and never fill a gap with an estimate.

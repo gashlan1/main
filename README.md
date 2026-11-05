@@ -16,6 +16,12 @@ fixed % of equity.
 Claude skills in `.claude/skills/`: `trader` (stocks), `crypto-trader`, `mt5-gold-trader`,
 `strategy-lab` (backtesting and safe tuning).
 
+**Status (2026-11-05):** the first backtests on real 2021–2026 data show the current
+trend-pullback strategy loses money on all four markets, in and out of sample
+(`research/backtests/2026-11-05/report.md`). A daily 200-day trend rule did much better on
+the same data. See `research/IMPROVEMENT_PLAN.md` before changing anything or trading real
+money. The bots stay in paper mode.
+
 ## Crypto bot setup
 
 Paper mode needs **no keys**. Merge to the default branch and it starts on the next hour,
