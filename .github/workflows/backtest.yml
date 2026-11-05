@@ -37,12 +37,15 @@ jobs:
         env:
           DUKA_PAUSE: "5"
         run: python research/backtest_runner.py --code-dir . --base bt all
+      - name: Daily trend study
+        run: python research/daily_trend_study.py --base bt | tee bt/daily_trend.md
       - name: Write report
         run: |
           day=$(date -u +%F)
           out="research/backtests/$day"
           mkdir -p "$out"
           python research/backtest_runner.py --code-dir . --base bt summary | tail -n +2 > "$out/report.md"
+          cp bt/daily_trend.md "$out/"
           cp bt/results/*.json "$out/"
           rm -f "$out/baseline_trades.json"
           echo "REPORT_DIR=$out" >> "$GITHUB_ENV"
