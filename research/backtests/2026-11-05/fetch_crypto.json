@@ -1,0 +1,35 @@
+{
+ "BTC": {
+  "source": "Binance spot klines, https://data.binance.vision (monthly zip archives)",
+  "symbol": "BTCUSDT",
+  "interval": "4h",
+  "months_requested": "2021-01 .. 2026-10",
+  "months_via_daily_files": [],
+  "empty_months": [],
+  "rows_downloaded": 12780,
+  "duplicates_dropped": 0,
+  "rows": 12780
+ },
+ "ETH": {
+  "source": "Binance spot klines, https://data.binance.vision (monthly zip archives)",
+  "symbol": "ETHUSDT",
+  "interval": "4h",
+  "months_requested": "2021-01 .. 2026-10",
+  "months_via_daily_files": [],
+  "empty_months": [],
+  "rows_downloaded": 12780,
+  "duplicates_dropped": 0,
+  "rows": 12780
+ },
+ "SOL": {
+  "source": "Binance spot klines, https://data.binance.vision (monthly zip archives)",
+  "symbol": "SOLUSDT",
+  "interval": "4h",
+  "months_requested": "2021-01 .. 2026-10",
+  "months_via_daily_files": [],
+  "empty_months": [],
+  "rows_downloaded": 12780,
+  "duplicates_dropped": 0,
+  "rows": 12780
+ }
+}

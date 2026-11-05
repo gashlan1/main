@@ -1,0 +1,275 @@
+{
+ "BTC": {
+  "pick": {
+   "stop_atr": 2.5,
+   "target_atr": 4.0,
+   "rsi_dip": 40
+  },
+  "pick_tier": 2,
+  "window": {
+   "start": "2025-01-31 00:00",
+   "end": "2026-10-31 20:00",
+   "bars": 3834,
+   "warmup_bars_prepended": 201
+  },
+  "pick_oos": {
+   "trades": 23,
+   "return_pct": -3.66,
+   "max_drawdown_pct": 4.06,
+   "win_rate_pct": 30.4,
+   "profit_factor": 0.75,
+   "avg_trade": -8.37,
+   "final_equity": 9634.1,
+   "too_few_trades": true
+  },
+  "baseline_oos": {
+   "trades": 23,
+   "return_pct": -3.18,
+   "max_drawdown_pct": 3.58,
+   "win_rate_pct": 30.4,
+   "profit_factor": 0.8,
+   "avg_trade": -6.22,
+   "final_equity": 9681.88,
+   "exits": {
+    "stop": 11,
+    "target": 6,
+    "trend_break": 6
+   },
+   "too_few_trades": true
+  }
+ },
+ "ETH": {
+  "pick": {
+   "stop_atr": 2.5,
+   "target_atr": 3.0,
+   "rsi_dip": 45
+  },
+  "pick_tier": 2,
+  "window": {
+   "start": "2025-01-31 00:00",
+   "end": "2026-10-31 20:00",
+   "bars": 3834,
+   "warmup_bars_prepended": 201
+  },
+  "pick_oos": {
+   "trades": 39,
+   "return_pct": -9.02,
+   "max_drawdown_pct": 12.36,
+   "win_rate_pct": 33.3,
+   "profit_factor": 0.64,
+   "avg_trade": -16.48,
+   "final_equity": 9097.71,
+   "too_few_trades": false
+  },
+  "baseline_oos": {
+   "trades": 23,
+   "return_pct": -5.62,
+   "max_drawdown_pct": 8.84,
+   "win_rate_pct": 26.1,
+   "profit_factor": 0.66,
+   "avg_trade": -17.15,
+   "final_equity": 9437.84,
+   "exits": {
+    "stop": 15,
+    "target": 5,
+    "trend_break": 3
+   },
+   "too_few_trades": true
+  }
+ },
+ "SOL": {
+  "pick": {
+   "stop_atr": 1.5,
+   "target_atr": 6.0,
+   "rsi_dip": 45
+  },
+  "pick_tier": 2,
+  "window": {
+   "start": "2025-01-31 00:00",
+   "end": "2026-10-31 20:00",
+   "bars": 3834,
+   "warmup_bars_prepended": 201
+  },
+  "pick_oos": {
+   "trades": 37,
+   "return_pct": -6.13,
+   "max_drawdown_pct": 9.47,
+   "win_rate_pct": 21.6,
+   "profit_factor": 0.83,
+   "avg_trade": -9.05,
+   "final_equity": 9387.42,
+   "too_few_trades": false
+  },
+  "baseline_oos": {
+   "trades": 18,
+   "return_pct": -6.13,
+   "max_drawdown_pct": 8.29,
+   "win_rate_pct": 27.8,
+   "profit_factor": 0.53,
+   "avg_trade": -27.09,
+   "final_equity": 9386.91,
+   "exits": {
+    "stop": 11,
+    "target": 4,
+    "trend_break": 3
+   },
+   "too_few_trades": true
+  }
+ },
+ "XAUUSD": {
+  "pick": {
+   "stop_atr": 2.0,
+   "target_atr": 6.0,
+   "rsi_dip": 40
+  },
+  "pick_tier": 2,
+  "window": {
+   "start": "2025-05-21 14:00",
+   "end": "2026-10-30 20:00",
+   "bars": 8576,
+   "warmup_bars_prepended": 201
+  },
+  "pick_oos": {
+   "trades": 45,
+   "return_pct": -1.88,
+   "max_drawdown_pct": 5.08,
+   "win_rate_pct": 33.3,
+   "profit_factor": 0.88,
+   "avg_trade": -2.78,
+   "final_equity": 9811.65,
+   "too_few_trades": false
+  },
+  "baseline_oos": {
+   "trades": 45,
+   "return_pct": -4.85,
+   "max_drawdown_pct": 7.38,
+   "win_rate_pct": 31.1,
+   "profit_factor": 0.7,
+   "avg_trade": -8.91,
+   "final_equity": 9515.32,
+   "exits": {
+    "stop": 33,
+    "target": 9,
+    "trend_break": 3
+   },
+   "too_few_trades": false
+  }
+ },
+ "CRYPTO_POOLED/BTC": {
+  "pick": {
+   "stop_atr": 2.5,
+   "target_atr": 3.0,
+   "rsi_dip": 45
+  },
+  "pick_tier": 1,
+  "window": {
+   "start": "2025-01-31 00:00",
+   "end": "2026-10-31 20:00",
+   "bars": 3834,
+   "warmup_bars_prepended": 201
+  },
+  "pick_oos": {
+   "trades": 41,
+   "return_pct": -6.64,
+   "max_drawdown_pct": 8.18,
+   "win_rate_pct": 34.1,
+   "profit_factor": 0.72,
+   "avg_trade": -8.67,
+   "final_equity": 9335.63,
+   "too_few_trades": false
+  },
+  "baseline_oos": {
+   "trades": 23,
+   "return_pct": -3.18,
+   "max_drawdown_pct": 3.58,
+   "win_rate_pct": 30.4,
+   "profit_factor": 0.8,
+   "avg_trade": -6.22,
+   "final_equity": 9681.88,
+   "exits": {
+    "stop": 11,
+    "target": 6,
+    "trend_break": 6
+   },
+   "too_few_trades": true
+  }
+ },
+ "CRYPTO_POOLED/ETH": {
+  "pick": {
+   "stop_atr": 2.5,
+   "target_atr": 3.0,
+   "rsi_dip": 45
+  },
+  "pick_tier": 1,
+  "window": {
+   "start": "2025-01-31 00:00",
+   "end": "2026-10-31 20:00",
+   "bars": 3834,
+   "warmup_bars_prepended": 201
+  },
+  "pick_oos": {
+   "trades": 39,
+   "return_pct": -9.02,
+   "max_drawdown_pct": 12.36,
+   "win_rate_pct": 33.3,
+   "profit_factor": 0.64,
+   "avg_trade": -16.48,
+   "final_equity": 9097.71,
+   "too_few_trades": false
+  },
+  "baseline_oos": {
+   "trades": 23,
+   "return_pct": -5.62,
+   "max_drawdown_pct": 8.84,
+   "win_rate_pct": 26.1,
+   "profit_factor": 0.66,
+   "avg_trade": -17.15,
+   "final_equity": 9437.84,
+   "exits": {
+    "stop": 15,
+    "target": 5,
+    "trend_break": 3
+   },
+   "too_few_trades": true
+  }
+ },
+ "CRYPTO_POOLED/SOL": {
+  "pick": {
+   "stop_atr": 2.5,
+   "target_atr": 3.0,
+   "rsi_dip": 45
+  },
+  "pick_tier": 1,
+  "window": {
+   "start": "2025-01-31 00:00",
+   "end": "2026-10-31 20:00",
+   "bars": 3834,
+   "warmup_bars_prepended": 201
+  },
+  "pick_oos": {
+   "trades": 34,
+   "return_pct": -7.88,
+   "max_drawdown_pct": 10.49,
+   "win_rate_pct": 29.4,
+   "profit_factor": 0.65,
+   "avg_trade": -17.06,
+   "final_equity": 9212.21,
+   "too_few_trades": false
+  },
+  "baseline_oos": {
+   "trades": 18,
+   "return_pct": -6.13,
+   "max_drawdown_pct": 8.29,
+   "win_rate_pct": 27.8,
+   "profit_factor": 0.53,
+   "avg_trade": -27.09,
+   "final_equity": 9386.91,
+   "exits": {
+    "stop": 11,
+    "target": 4,
+    "trend_break": 3
+   },
+   "too_few_trades": true
+  }
+ }
+}
