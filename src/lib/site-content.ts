@@ -363,7 +363,7 @@ export const en: SiteContent = {
       },
       {
         name: "Mohamed Ahmed Gashlan",
-        role: "Co-Founder",
+        role: "Co-Founder & Director",
         credentials: "LLM and LLB, United Kingdom. Corporate and commercial law: governance, capital markets, fintech and international advisory for clients locally and globally.",
         photo: FOUNDER_PHOTOS.mohamed,
       },
@@ -701,7 +701,7 @@ export const ar: SiteContent = {
       },
       {
         name: "محمد أحمد قشلان",
-        role: "شريك مؤسس",
+        role: "شريك مؤسس ومدير",
         credentials: "ماجستير وبكالوريوس في القانون من المملكة المتحدة. متخصص في قانون الشركات والأعمال: الحوكمة وأسواق المال والتقنية المالية والاستشارات الدولية لعملاء محليين ودوليين.",
         photo: FOUNDER_PHOTOS.mohamed,
       },

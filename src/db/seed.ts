@@ -54,7 +54,7 @@ async function main() {
   const adminEmail = (process.env.SEED_ADMIN_EMAIL || "mag@aglc.sa").toLowerCase();
   const adminPassword = process.env.SEED_ADMIN_PASSWORD || password;
   const staff: Array<{ name: string; email: string; role: "admin" | "associate"; title: string }> = [
-    { name: "Mohamed Gashlan", email: "mag@aglc.sa", role: "admin", title: "Co-Founder & Managing Director" },
+    { name: "Mohamed Gashlan", email: "mag@aglc.sa", role: "admin", title: "Co-Founder & Director" },
     { name: "Majed Alahmari", email: "majed@aglc.sa", role: "admin", title: "Co-Founder & Managing Director" },
     { name: "Abdullah Salamah Mahdi", email: "abdullah@aglc.sa", role: "admin", title: "Head of Advisory" },
     { name: "Ibrahem Rezq", email: "iar@aglc.sa", role: "associate", title: "Associate" },
