@@ -29,3 +29,27 @@ export function insertParagraph(current: string, selectionEnd: number | null, te
   const inserted = `${prefix}${text}${suffix}`;
   return { value: before + inserted + after, caret: before.length + inserted.length - (suffix.length ? suffix.length : 0) };
 }
+
+/** Sign-off lines that close a letter; a sentence goes above them, never below. */
+const SIGN_OFF = /^[ \t]*(sincerely|yours sincerely|yours faithfully|kind regards|best regards|warm regards|with (?:best|kind) regards|regards|best wishes|مع خالص التحية|وتفضلوا بقبول)/im;
+
+/**
+ * Where a sentence belongs when the user has not placed the caret yet: after
+ * the greeting and anything already written, above the sign-off.
+ */
+export function writingPoint(current: string): number {
+  const m = SIGN_OFF.exec(current);
+  let end = m ? m.index : current.length;
+  while (end > 0 && /\s/.test(current[end - 1])) end--;
+  return end;
+}
+
+/** Insert text as its own paragraph at the writing point, one blank line on each side. */
+export function insertAtWritingPoint(current: string, text: string): { value: string; caret: number } {
+  const at = writingPoint(current);
+  const before = current.slice(0, at);
+  const after = current.slice(at).replace(/^\s+/, "");
+  const prefix = before.length === 0 ? "" : "\n\n";
+  const suffix = after.length === 0 ? "" : "\n\n";
+  return { value: before + prefix + text + suffix + after, caret: before.length + prefix.length + text.length };
+}

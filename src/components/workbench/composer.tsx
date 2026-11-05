@@ -6,7 +6,7 @@ import { Download, Paperclip, Send, Sparkles, StickyNote, Undo2, Zap } from "luc
 import type { DocumentRow, ProposalRow, QuickSentence, RequestRow } from "@/db/schema";
 import type { SessionUser } from "@/lib/auth";
 import { FIRM } from "@/lib/firm";
-import { fillPlaceholders, insertParagraph, surnameOf } from "@/lib/sentences";
+import { fillPlaceholders, insertAtWritingPoint, insertParagraph, surnameOf } from "@/lib/sentences";
 import { addNoteAction } from "@/app/actions/requests";
 
 type ReplyKind = "proposal" | "info_request" | "status" | "general";
@@ -71,6 +71,9 @@ export function Composer(props: ComposerProps) {
   const [notice, setNotice] = useState<{ tone: "ok" | "error"; text: string } | null>(null);
   const [pending, startTransition] = useTransition();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  // False until the user (or a previous insert) puts the caret in the message;
+  // until then an untouched textarea reports position 0, above the greeting.
+  const caretPlaced = useRef(false);
   const abortRef = useRef<AbortController | null>(null);
 
   const categories = useMemo(() => Array.from(new Set(sentences.map((s) => s.category))), [sentences]);
@@ -79,7 +82,7 @@ export function Composer(props: ComposerProps) {
   function insertSentence(s: QuickSentence) {
     const text = fillPlaceholders(s.text, placeholders);
     const ta = textareaRef.current;
-    const { value, caret } = insertParagraph(body, ta ? ta.selectionEnd : null, text);
+    const { value, caret } = ta && caretPlaced.current ? insertParagraph(body, ta.selectionEnd, text) : insertAtWritingPoint(body, text);
     setBody(value);
     setUsedSentences((u) => [...u, text]);
     requestAnimationFrame(() => {
@@ -94,6 +97,7 @@ export function Composer(props: ComposerProps) {
     setNotice(null);
     setDrafting(true);
     setUndo(body);
+    caretPlaced.current = false;
     const controller = new AbortController();
     abortRef.current = controller;
     try {
@@ -158,6 +162,7 @@ export function Composer(props: ComposerProps) {
         setNotice({ tone: "ok", text: data.delivery ?? "Sent." });
       }
       setBody(defaultBody(request, me));
+      caretPlaced.current = false;
       setUsedSentences([]);
       setAttachments(new Set());
       router.refresh();
@@ -211,6 +216,7 @@ export function Composer(props: ComposerProps) {
         className="input mt-3 min-h-[320px] font-sans text-[14px] leading-relaxed"
         value={body}
         onChange={(e) => setBody(e.target.value)}
+        onFocus={() => (caretPlaced.current = true)}
         aria-label="Message"
         readOnly={drafting}
       />
@@ -316,6 +322,7 @@ export function Composer(props: ComposerProps) {
             startTransition(async () => {
               await addNoteAction(request.id, body);
               setBody(defaultBody(request, me));
+              caretPlaced.current = false;
               setNotice({ tone: "ok", text: "Saved as an internal note." });
             })
           }
