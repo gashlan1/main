@@ -197,7 +197,8 @@ body {
   font-family: var(--font-arabic);
   font-weight: 700;
 }
-[dir="rtl"] .site-eyebrow {
+[dir="rtl"] .site-eyebrow,
+[dir="rtl"] .b-label {
   letter-spacing: 0;
 }
 

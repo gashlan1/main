@@ -76,35 +76,40 @@ export function HomePageB({ content }: { content: SiteContent }) {
             </div>
           </div>
 
-          {/* Instrument: the proposal as a glass plate */}
-          <div className="relative rounded-md border border-gold-300/30 bg-navy-950/60 p-6 backdrop-blur-sm sm:p-7" dir="ltr">
-            <div className="flex items-center justify-between">
-              <p className="b-label text-gold-300" dir={content.dir}>
-                {content.proposal.eyebrow}
-              </p>
-              <span className="font-mono text-[11px] text-white/45">REF. INQ-2026-J-DRVG</span>
-            </div>
-            <h2 className="mt-3 font-display text-2xl font-semibold" dir={content.dir}>
-              {content.proposal.title}
-            </h2>
-            <ol className="mt-5 divide-y divide-white/10 border-y border-white/10 text-[13px]">
-              {content.proposal.lines.slice(0, 6).map((line, i) => {
-                const [label, amount] = line.split(" — ");
-                const total = i === 5;
-                return (
-                  <li key={line} className={`flex items-baseline justify-between gap-4 py-2.5 ${total ? "font-semibold text-gold-300" : "text-white/80"}`} dir={content.dir}>
-                    <span className="flex items-baseline gap-3">
-                      {!total ? <span className="font-mono text-[11px] text-gold-300/70">0{i + 1}</span> : null}
-                      <span>{label}</span>
-                    </span>
-                    <span className="shrink-0 tabular-nums">{amount}</span>
-                  </li>
-                );
-              })}
-            </ol>
-            <p className="mt-3 text-[12px] italic text-white/50" dir={content.dir}>
-              {content.proposal.lines[6]}
+          {/* The two offices' bearings, above the proposal */}
+          <div>
+            <p className="mb-4 hidden justify-between font-mono text-[11px] tracking-[0.08em] text-gold-300/60 lg:flex" dir="ltr" aria-hidden>
+              <span>24°41′N 46°42′E · RIYADH</span>
+              <span>21°29′N 39°11′E · JEDDAH</span>
             </p>
+            {/* Instrument: the proposal as a glass plate */}
+            <div className="relative rounded-md border border-gold-300/30 bg-navy-950/60 p-6 backdrop-blur-sm sm:p-7" dir="ltr">
+              <div className="flex items-center justify-between" dir={content.dir}>
+                <p className="b-label text-gold-300">{content.proposal.eyebrow}</p>
+                <span className="b-label text-white/40">{ar ? "نموذج" : "Sample"}</span>
+              </div>
+              <h2 className="mt-3 font-display text-2xl font-semibold" dir={content.dir}>
+                {content.proposal.title}
+              </h2>
+              <ol className="mt-5 divide-y divide-white/10 border-y border-white/10 text-[13px]">
+                {content.proposal.lines.slice(0, 6).map((line, i) => {
+                  const [label, amount] = line.split(" — ");
+                  const total = i === 5;
+                  return (
+                    <li key={line} className={`flex items-baseline justify-between gap-4 py-2.5 ${total ? "font-semibold text-gold-300" : "text-white/80"}`} dir={content.dir}>
+                      <span className="flex items-baseline gap-3">
+                        {!total ? <span className="font-mono text-[11px] text-gold-300/70">0{i + 1}</span> : null}
+                        <span>{label}</span>
+                      </span>
+                      <span className="shrink-0 tabular-nums">{amount}</span>
+                    </li>
+                  );
+                })}
+              </ol>
+              <p className="mt-3 text-[12px] italic text-white/50" dir={content.dir}>
+                {content.proposal.lines[6]}
+              </p>
+            </div>
           </div>
         </div>
 
@@ -466,6 +471,7 @@ export function HomePageB({ content }: { content: SiteContent }) {
       {/* Draft switch, only on this variant */}
       <Link
         href={ar ? "/ar" : "/"}
+        data-option-switch
         className="fixed bottom-4 end-4 z-40 rounded-full border border-gold-500/60 bg-navy-950/90 px-4 py-2 text-xs font-semibold text-gold-300 shadow-lg backdrop-blur hover:bg-navy-900"
         style={{ bottom: "max(16px, env(safe-area-inset-bottom, 0px))" }}
       >
