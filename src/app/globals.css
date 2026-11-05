@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --color-brand-50: #fcf3f3;
+  --color-brand-100: #f8e1e2;
+  --color-brand-200: #f0c3c5;
+  --color-brand-300: #e39a9e;
+  --color-brand-400: #d1666c;
+  --color-brand-500: #b83e46;
+  --color-brand-600: #9d2a32;
+  --color-brand-700: #8a1c23;
+  --color-brand-800: #70171d;
+  --color-brand-900: #4f1115;
+
+  --color-ink-950: #0b0c0e;
+  --color-ink-900: #141518;
+  --color-ink-800: #1d1f24;
+  --color-ink-700: #2a2d34;
+  --color-ink-600: #3a3e47;
+  --color-ink-500: #5c616c;
+  --color-ink-400: #8b909b;
+  --color-ink-300: #b9bcc4;
+  --color-ink-200: #dcdee3;
+  --color-ink-100: #eceef1;
+  --color-ink-50: #f6f7f9;
+}
+
+:root {
+  --background: #f3f4f6;
+  --foreground: #16181d;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@layer components {
+  /* Buttons share one base; variants only add colour. */
+  .btn,
+  .btn-primary,
+  .btn-dark,
+  .btn-secondary,
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium transition-colors
+      disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600;
+  }
+  .btn-primary {
+    @apply bg-brand-700 text-white hover:bg-brand-800;
+  }
+  .btn-dark {
+    @apply bg-ink-900 text-white hover:bg-ink-700;
+  }
+  .btn-secondary {
+    @apply border border-ink-200 bg-white text-ink-800 shadow-sm hover:bg-ink-50;
+  }
+  .btn-ghost {
+    @apply text-ink-600 hover:bg-ink-100 hover:text-ink-900;
+  }
+  .btn-sm {
+    @apply px-2.5 py-1.5 text-xs;
+  }
+  .btn-lg {
+    @apply px-5 py-3 text-base;
+  }
+  .input {
+    @apply w-full rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm text-ink-900 shadow-sm placeholder:text-ink-400
+      focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-100 disabled:bg-ink-50;
+  }
+  .label {
+    @apply mb-1 block text-xs font-semibold uppercase tracking-wide text-ink-500;
+  }
+  .card {
+    @apply rounded-xl border border-ink-200 bg-white shadow-sm;
+  }
+  .chip {
+    @apply inline-flex max-w-full cursor-pointer items-center gap-1.5 rounded-full border border-ink-200 bg-white px-3 py-1.5 text-left text-xs
+      font-medium text-ink-700 transition-colors hover:border-brand-300 hover:bg-brand-50 hover:text-brand-800;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide;
+  }
+  .nav-link {
+    @apply flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-ink-300 transition-colors hover:bg-ink-800 hover:text-white;
+  }
+  .nav-link-active {
+    @apply bg-ink-800 text-white;
+  }
+  .tick {
+    @apply size-5 shrink-0 cursor-pointer rounded border-ink-300 text-brand-700 focus:ring-brand-500;
+  }
+}
+
+.prose-email {
+  white-space: pre-wrap;
+  line-height: 1.6;
+}

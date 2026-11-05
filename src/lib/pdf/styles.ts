@@ -1,0 +1,63 @@
+import { StyleSheet } from "@react-pdf/renderer";
+
+export const COLORS = {
+  text: "#111111",
+  muted: "#444444",
+  band: "#d9d9d9",
+  border: "#8c8c8c",
+  rowAlt: "#f5f5f5",
+  highlightBg: "#f9e9e9",
+  highlightText: "#b1232b",
+  accent: "#b1232b",
+  boxBg: "#f1f1f1",
+};
+
+export const base = StyleSheet.create({
+  page: {
+    paddingTop: 36,
+    paddingBottom: 48,
+    paddingHorizontal: 56,
+    fontFamily: "Times-Roman",
+    fontSize: 10.5,
+    lineHeight: 1.25,
+    color: COLORS.text,
+  },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    marginBottom: 22,
+  },
+  logo: { width: 150 },
+  contact: { fontSize: 8.5, color: COLORS.muted, textAlign: "right", marginTop: 20, lineHeight: 1.4 },
+  contactStrong: { fontFamily: "Times-Bold", color: COLORS.text },
+  bold: { fontFamily: "Times-Bold" },
+  italic: { fontFamily: "Times-Italic" },
+  paragraph: { marginBottom: 8, textAlign: "justify" },
+  sectionTitle: { fontFamily: "Times-Bold", fontSize: 11, marginTop: 10, marginBottom: 5 },
+  band: {
+    backgroundColor: "#d9d9d9",
+    paddingVertical: 3,
+    paddingHorizontal: 5,
+    marginTop: 6,
+    marginBottom: 4,
+  },
+  bandText: { fontFamily: "Times-Bold", fontSize: 11, textDecoration: "underline" },
+  bullet: { flexDirection: "row", marginBottom: 2, paddingRight: 6 },
+  bulletDot: { width: 14, textAlign: "center" },
+  bulletText: { flex: 1, textAlign: "justify" },
+  table: { borderWidth: 0.75, borderColor: "#8c8c8c", marginTop: 4, marginBottom: 8 },
+  tr: { flexDirection: "row", borderBottomWidth: 0.75, borderBottomColor: "#8c8c8c" },
+  trLast: { flexDirection: "row" },
+  th: {
+    fontFamily: "Times-Bold",
+    backgroundColor: "#d9d9d9",
+    paddingVertical: 4,
+    paddingHorizontal: 6,
+    borderRightWidth: 0.75,
+    borderRightColor: "#8c8c8c",
+  },
+  td: { paddingVertical: 4, paddingHorizontal: 6, borderRightWidth: 0.75, borderRightColor: "#8c8c8c" },
+  tdLast: { borderRightWidth: 0 },
+  totalRow: { backgroundColor: "#d9d9d9" },
+});
