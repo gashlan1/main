@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Check, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
-import type { SiteContent } from "@/lib/site-content";
+import { ArrowRight, Check, ExternalLink, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { MAIN_SITE_URL, type SiteContent } from "@/lib/site-content";
 import { FIRM } from "@/lib/firm";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
@@ -155,33 +155,54 @@ export function HomePage({ content }: { content: SiteContent }) {
             ))}
           </div>
 
-          <div className="mt-12 grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start">
+          <div className="mt-14 grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-start">
             <div>
               <h3 className="font-display text-2xl font-semibold text-navy-900">{content.fees.servicesTitle}</h3>
               <p className="mt-3 text-[15px] leading-relaxed text-navy-900/75">{content.fees.servicesIntro}</p>
-              <p className="mt-6 text-sm text-navy-900/60">{content.fees.footnote}</p>
+              <p className="mt-4 text-sm text-navy-900/60">{content.fees.servicesNote}</p>
+              <p className="mt-4 text-sm text-navy-900/60">{content.fees.footnote}</p>
             </div>
-            <div className="overflow-x-auto rounded-xl border border-paper-200">
-              <table className="w-full text-sm">
-                <tbody>
-                  {content.fees.services.map((s) => (
-                    <tr key={s.code} className="border-b border-paper-200 last:border-0">
-                      <td className="px-4 py-3 font-mono text-xs text-navy-900/50">{s.code}</td>
-                      <td className="px-2 py-3 text-navy-900">{s.name}</td>
-                      <td className="px-4 py-3 text-end font-semibold tabular-nums text-navy-900">
-                        {content.fees.currency} {sar(s.price)}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              <p className="border-t border-paper-200 bg-paper-50 px-4 py-2 text-xs text-navy-900/60">{content.fees.servicesNote}</p>
+            <div className="divide-y divide-paper-200 rounded-xl border border-paper-200">
+              {content.fees.groups.map((group, gi) => (
+                <details key={group.title} className="group" open={gi === 0}>
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-4 py-3 text-[15px] font-semibold text-navy-900 [&::-webkit-details-marker]:hidden">
+                    <span>
+                      {group.title} <span className="font-normal text-navy-900/50">({group.services.length})</span>
+                    </span>
+                    <span className="text-navy-900/40 transition-transform group-open:rotate-45" aria-hidden>
+                      +
+                    </span>
+                  </summary>
+                  <table className="w-full border-t border-paper-200 text-sm">
+                    <tbody>
+                      {group.services.map((s) => (
+                        <tr key={s.code} className="border-b border-paper-200/70 last:border-0">
+                          <td className="px-4 py-2.5 font-mono text-xs text-navy-900/50" dir="ltr">
+                            {s.code}
+                          </td>
+                          <td className="px-2 py-2.5 text-navy-900">{s.name}</td>
+                          <td className="whitespace-nowrap px-4 py-2.5 text-end font-semibold tabular-nums text-navy-900">
+                            {s.price === null ? (
+                              <span className="font-normal text-navy-900/60">{content.fees.onRequest}</span>
+                            ) : (
+                              <>
+                                {content.fees.currency} {sar(s.price)}
+                                {s.unit ? <span className="font-normal text-navy-900/50"> {content.fees.units[s.unit]}</span> : null}
+                              </>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </details>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why */}
+      {/* The firm */}
       <section id="why" className="bg-navy-900 py-20 text-white scroll-mt-16">
         <div className="site-wrap">
           <p className="site-eyebrow text-gold-300">{content.why.eyebrow}</p>
@@ -194,24 +215,73 @@ export function HomePage({ content }: { content: SiteContent }) {
               </div>
             ))}
           </div>
-          <div className="mt-14">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">{content.why.teamTitle}</p>
-            <ul className="mt-4 flex flex-wrap gap-8">
-              {content.why.team.map((m) => (
-                <li key={m.name} className="flex items-center gap-4">
-                  <span className="flex size-12 items-center justify-center rounded-full border border-gold-500/60 font-display text-lg text-gold-300" aria-hidden>
-                    {(() => {
-                      const parts = m.name.replace(/^(Lawyer|المحامي)\s+/u, "").split(/\s+/);
-                      return `${parts[0][0]}${parts[parts.length - 1][0]}`;
-                    })()}
-                  </span>
-                  <span>
-                    <span className="block font-semibold">{m.name}</span>
-                    <span className="block text-sm text-white/65">{m.role}</span>
-                  </span>
+
+          <div className="mt-16 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+            <div>
+              <h3 className="font-display text-2xl font-semibold">{content.why.firmTitle}</h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-white/75">{content.why.firmText}</p>
+              <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">{content.why.practiceTitle}</p>
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {content.why.practiceAreas.map((area) => (
+                  <li key={area} className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[13px] text-white/85">
+                    {area}
+                  </li>
+                ))}
+              </ul>
+              <a href={MAIN_SITE_URL} target="_blank" rel="noreferrer" className="site-btn-light mt-8">
+                {content.why.mainSiteCta}
+                <ExternalLink className="size-4" />
+              </a>
+            </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">{content.why.foundersTitle}</p>
+              <ul className="mt-4 grid gap-5 sm:grid-cols-2">
+                {content.why.founders.map((f) => (
+                  <li key={f.name} className="rounded-xl border border-white/10 bg-white/5 p-5">
+                    {f.photo ? (
+                      <Image src={f.photo} alt={f.name} width={88} height={88} className="size-[88px] rounded-full border-2 border-gold-500/70 object-cover" />
+                    ) : (
+                      <span className="flex size-[88px] items-center justify-center rounded-full border-2 border-gold-500/70 font-display text-2xl text-gold-300" aria-hidden>
+                        {f.name.split(/\s+/)[0][0]}
+                      </span>
+                    )}
+                    <h4 className="mt-4 font-semibold">{f.name}</h4>
+                    <p className="text-sm text-gold-300">{f.role}</p>
+                    <p className="mt-2 text-[13.5px] leading-relaxed text-white/70">{f.credentials}</p>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-5 text-[14px] leading-relaxed text-white/65">{content.why.teamText}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tenders */}
+      <section id="tenders" className="border-y border-gold-500/40 bg-gold-200/40 py-16 scroll-mt-16">
+        <div className="site-wrap grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:items-center">
+          <div>
+            <p className="site-eyebrow">{content.tenders.eyebrow}</p>
+            <h2 className="site-h2">{content.tenders.title}</h2>
+            <p className="site-lead">{content.tenders.text}</p>
+            <ul className="mt-6 grid gap-2 text-[15px] text-navy-900/85 sm:grid-cols-1">
+              {content.tenders.points.map((p) => (
+                <li key={p} className="flex items-start gap-2">
+                  <Check className="mt-1 size-4 shrink-0 text-gold-600" />
+                  <span>{p}</span>
                 </li>
               ))}
             </ul>
+          </div>
+          <div className="site-card border-gold-500/50 bg-white/80 text-center">
+            <p className="font-display text-3xl font-semibold text-navy-900" dir="ltr">
+              tender.aglc.sa
+            </p>
+            <p className="mt-2 text-sm text-navy-900/70">{content.tenders.eyebrow}</p>
+            <a href={content.tenders.url} target="_blank" rel="noreferrer" className="site-btn-gold mt-6 w-full">
+              {content.tenders.cta}
+              <ExternalLink className="size-4" />
+            </a>
           </div>
         </div>
       </section>

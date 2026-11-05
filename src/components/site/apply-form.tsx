@@ -149,6 +149,16 @@ export function ApplyForm({ content, defaults }: { content: SiteContent; default
         </label>
         <textarea id="details" name="details" rows={6} required className="input" placeholder={a.detailsPlaceholder} />
       </div>
+      <label className="flex items-start gap-3 text-sm text-navy-900/80">
+        <input type="checkbox" name="consent" required className="tick mt-0.5" />
+        <span>
+          {a.consent}{" "}
+          <a href={content.lang === "ar" ? "/ar/privacy" : "/privacy"} target="_blank" rel="noreferrer" className="font-medium text-gold-700 underline">
+            {a.consentLink}
+          </a>
+          .
+        </span>
+      </label>
       {error ? <p className="rounded-lg bg-brand-50 px-3 py-2 text-sm text-brand-800">{error}</p> : null}
       <button type="submit" className="site-btn-gold w-full" disabled={busy}>
         <Send className="size-4" />

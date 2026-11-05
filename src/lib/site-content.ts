@@ -1,6 +1,7 @@
 /**
  * Copy for the public website (inc.aglc.sa) in English and Arabic.
- * Prices and package contents mirror the firm's current price list.
+ * Prices and package contents mirror the firm's current price list; the firm
+ * facts come from the 2026 company profile.
  */
 
 export type Lang = "en" | "ar";
@@ -16,12 +17,17 @@ export type Package = {
   recommended?: boolean;
 };
 
+export type ServiceLine = { code: string; name: string; price: number | null; unit?: string };
+export type ServiceGroup = { title: string; services: ServiceLine[] };
+
+export type Founder = { name: string; role: string; credentials: string; photo?: string };
+
 export type SiteContent = {
   lang: Lang;
   dir: "ltr" | "rtl";
   otherLang: { label: string; href: string };
   meta: { title: string; description: string };
-  nav: { process: string; fees: string; why: string; residency: string; faq: string; contact: string; cta: string; staff: string };
+  nav: { process: string; fees: string; why: string; tenders: string; residency: string; faq: string; contact: string; cta: string; staff: string; mainSite: string };
   hero: { eyebrow: string; title: string; titleAccent: string; subtitle: string; cta: string; secondary: string; facts: string[] };
   process: {
     eyebrow: string;
@@ -44,16 +50,40 @@ export type SiteContent = {
     choose: string;
     servicesTitle: string;
     servicesIntro: string;
-    services: { code: string; name: string; price: number }[];
+    groups: ServiceGroup[];
+    onRequest: string;
+    units: Record<string, string>;
     servicesNote: string;
     footnote: string;
   };
-  why: { eyebrow: string; title: string; points: { title: string; text: string }[]; teamTitle: string; team: { name: string; role: string }[] };
+  why: {
+    eyebrow: string;
+    title: string;
+    points: { title: string; text: string }[];
+    firmTitle: string;
+    firmText: string;
+    practiceTitle: string;
+    practiceAreas: string[];
+    foundersTitle: string;
+    founders: Founder[];
+    teamText: string;
+    mainSiteCta: string;
+  };
   proposal: { eyebrow: string; title: string; text: string; lines: string[] };
+  tenders: { eyebrow: string; title: string; text: string; points: string[]; cta: string; url: string };
   residency: { eyebrow: string; title: string; intro: string; tracks: { title: string; items: string[] }[]; cta: string };
   faq: { eyebrow: string; title: string; items: { q: string; a: string }[]; disclaimer: string };
   contact: { eyebrow: string; title: string; intro: string; phone: string; email: string; offices: string; officesValue: string; cta: string; whatsapp: string };
-  footer: { legalName: string; staff: string; rights: string };
+  footer: {
+    legalName: string;
+    staff: string;
+    rights: string;
+    resourcesTitle: string;
+    resources: { label: string; href: string }[];
+    sitesTitle: string;
+    privacy: string;
+  };
+  privacy: { title: string; updated: string; sections: { h: string; p: string }[] };
   apply: {
     title: string;
     intro: string;
@@ -72,6 +102,8 @@ export type SiteContent = {
     activitiesPlaceholder: string;
     details: string;
     detailsPlaceholder: string;
+    consent: string;
+    consentLink: string;
     submit: string;
     sending: string;
     privacy: string;
@@ -98,6 +130,18 @@ const SERVICE_OPTIONS_EN = [
   "Other",
 ];
 
+const RESOURCE_LINKS = [
+  { key: "misa", href: "https://misa.gov.sa" },
+  { key: "mc", href: "https://mc.gov.sa" },
+  { key: "pr", href: "https://sapr.gov.sa" },
+  { key: "zatca", href: "https://zatca.gov.sa" },
+];
+
+export const TENDERS_URL = "https://tender.aglc.sa";
+export const MAIN_SITE_URL = "https://aglc.sa";
+
+const FOUNDER_PHOTOS = { majed: "/brand/founders/majed-alahmari.jpg", mohamed: "/brand/founders/mohamed-gashlan.jpg" };
+
 export const en: SiteContent = {
   lang: "en",
   dir: "ltr",
@@ -107,7 +151,18 @@ export const en: SiteContent = {
     description:
       "A licensed Saudi law firm sets up your company — MISA license, commercial registration, bank account and visas — for a fixed fee agreed in writing before any work begins.",
   },
-  nav: { process: "How it works", fees: "Fees", why: "Why us", residency: "Residency", faq: "FAQ", contact: "Contact", cta: "Start application", staff: "Staff sign-in" },
+  nav: {
+    process: "How it works",
+    fees: "Fees",
+    why: "The firm",
+    tenders: "Tenders",
+    residency: "Residency",
+    faq: "FAQ",
+    contact: "Contact",
+    cta: "Start application",
+    staff: "Staff sign-in",
+    mainSite: "aglc.sa",
+  },
   hero: {
     eyebrow: "Alahmari & Gashlan · Attorneys & Legal Consultants · Jeddah and Riyadh",
     title: "Company formation in Saudi Arabia",
@@ -202,22 +257,73 @@ export const en: SiteContent = {
     ],
     choose: "Start with this package",
     servicesTitle: "Or choose individual services",
-    servicesIntro: "Core incorporation services, priced individually. Regulatory, banking, visa and ongoing services are quoted in your proposal.",
-    services: [
-      { code: "INC-01", name: "MISA investment license application", price: 8000 },
-      { code: "INC-02", name: "Articles of Association drafting", price: 5000 },
-      { code: "INC-03", name: "Articles of Association notarization", price: 2500 },
-      { code: "INC-04", name: "Commercial Registration (CR)", price: 3500 },
-      { code: "INC-05", name: "Chamber of Commerce membership", price: 2000 },
-      { code: "INC-06", name: "National Address registration", price: 1500 },
-      { code: "INC-07", name: "Official Gazette publication", price: 1500 },
-      { code: "INC-08", name: "Company structure advisory", price: 4000 },
+    servicesIntro: "Thirty-two services priced individually, so a proposal can be built from exactly what you need.",
+    groups: [
+      {
+        title: "Core incorporation",
+        services: [
+          { code: "INC-01", name: "MISA investment license application", price: 8000 },
+          { code: "INC-02", name: "Articles of Association drafting", price: 5000 },
+          { code: "INC-03", name: "Articles of Association notarization", price: 2500 },
+          { code: "INC-04", name: "Commercial Registration (CR)", price: 3500 },
+          { code: "INC-05", name: "Chamber of Commerce membership", price: 2000 },
+          { code: "INC-06", name: "National Address registration", price: 1500 },
+          { code: "INC-07", name: "Official Gazette publication", price: 1500 },
+          { code: "INC-08", name: "Company structure advisory", price: 4000 },
+        ],
+      },
+      {
+        title: "Regulatory registrations",
+        services: [
+          { code: "REG-01", name: "ZATCA registration (VAT / withholding tax)", price: 3500 },
+          { code: "REG-02", name: "GOSI registration (social insurance)", price: 2500 },
+          { code: "REG-03", name: "HRSD / Qiwa registration (labour)", price: 2500 },
+          { code: "REG-04", name: "Municipality license", price: 3000 },
+          { code: "REG-05", name: "Saudization (Nitaqat) compliance setup", price: 3500 },
+        ],
+      },
+      {
+        title: "Banking and financial setup",
+        services: [
+          { code: "BNK-01", name: "Corporate bank account opening", price: null },
+          { code: "BNK-02", name: "Internet banking activation", price: 1500 },
+          { code: "BNK-03", name: "Additional bank account (second bank)", price: 4500 },
+        ],
+      },
+      {
+        title: "Visa and immigration",
+        services: [
+          { code: "VIS-01", name: "Work visa application", price: 5000, unit: "person" },
+          { code: "VIS-02", name: "Iqama issuance", price: 5000, unit: "person" },
+          { code: "VIS-03", name: "Medical examination coordination", price: 1000, unit: "person" },
+          { code: "VIS-04", name: "Visa transfer", price: 3500, unit: "person" },
+          { code: "VIS-05", name: "Exit / re-entry visa processing", price: 1500, unit: "person" },
+          { code: "VIS-06", name: "Premium Residency application support", price: 20000 },
+        ],
+      },
+      {
+        title: "Ongoing and add-on",
+        services: [
+          { code: "ADD-01", name: "Accounting and tax compliance", price: 3500, unit: "month" },
+          { code: "ADD-02", name: "PRO / GRO retainer", price: 4800, unit: "month" },
+          { code: "ADD-03", name: "Document attestation and legalization", price: 4000 },
+          { code: "ADD-04", name: "Virtual office address", price: 6500, unit: "year" },
+          { code: "ADD-05", name: "Trademark registration", price: 6500, unit: "class" },
+          { code: "ADD-06", name: "Annual compliance review", price: 12500, unit: "year" },
+          { code: "ADD-07", name: "Company amendment (CR / AoA changes)", price: 5000, unit: "each" },
+          { code: "ADD-08", name: "Annual CR renewal support", price: 3000, unit: "year" },
+          { code: "ADD-09", name: "MISA license renewal support", price: 4000, unit: "year" },
+          { code: "ADD-10", name: "Liquidation / deregistration support", price: 15000 },
+        ],
+      },
     ],
+    onRequest: "In Full Formation",
+    units: { person: "/ person", month: "/ month", year: "/ year", class: "/ class", each: "each" },
     servicesNote: "Prices in SAR, before VAT and government fees.",
     footnote: "Payment: 50% on signing the proposal, 50% on completion. If the eligibility phase shows that your activity cannot be licensed on the proposed route, only that phase's fee is payable.",
   },
   why: {
-    eyebrow: "Why a law firm",
+    eyebrow: "The firm",
     title: "A licensed law firm, not a formation agent",
     points: [
       { title: "Lawyers handle your file", text: "Alahmari & Gashlan is a Saudi law firm. The person forming your company can also give you a written legal opinion on structure, capital, licensing and employment." },
@@ -225,11 +331,42 @@ export const en: SiteContent = {
       { title: "A proposal you can hold us to", text: "Phases, fees, timeline and required documents in one signed document, with the activity-matching table attached." },
       { title: "One point of contact", text: "A named associate from the first email to the bank account, with every step reported in writing." },
     ],
-    teamTitle: "The partners",
-    team: [
-      { name: "Lawyer Mohammed Ahmed Gashlan", role: "Founding Partner" },
-      { name: "Majed Alahmari", role: "Co-Founder & Managing Director" },
+    firmTitle: "Part of a full-service Saudi law firm",
+    firmText:
+      "The incorporation desk is one practice of Alahmari & Gashlan, a law firm in Jeddah and Riyadh whose lawyers advise on corporate, finance, employment, tax, real estate and dispute resolution. The company we form for you has a law firm behind it as it grows.",
+    practiceTitle: "Practice areas",
+    practiceAreas: [
+      "General corporate and commercial",
+      "Contract drafting and negotiation",
+      "Banking, finance and capital markets",
+      "Dispute resolution and international arbitration",
+      "Major projects and investments",
+      "Employment and labor law",
+      "Governance and compliance",
+      "Sports law",
+      "Healthcare law",
+      "Tax and international trade",
+      "Intellectual property and technology",
+      "Real estate",
     ],
+    foundersTitle: "Founders",
+    founders: [
+      {
+        name: "Majed Bin Dhafer Al-Ahmari",
+        role: "Co-Founder & Managing Director",
+        credentials: "Bachelor of Law, King Abdulaziz University. Administrative, commercial, financial and sports law; litigation before commercial, administrative and criminal courts and judicial committees.",
+        photo: FOUNDER_PHOTOS.majed,
+      },
+      {
+        name: "Mohamed Ahmed Gashlan",
+        role: "Co-Founder",
+        credentials: "LLM and LLB, United Kingdom. Corporate and commercial law: governance, capital markets, fintech and international advisory for clients locally and globally.",
+        photo: FOUNDER_PHOTOS.mohamed,
+      },
+    ],
+    teamText:
+      "Senior consultants include Abdullah Mahdi Salama (18+ years, M&A and cross-border recovery), Mohamed Said Abbas (19+ years, international commercial arbitration), Hawazen Ahmad Saeed (12+ years, corporate and intellectual property) and Ibrahim Ahmed Rezq (LL.M., University of Miami; formerly legal counsel at Aramco Luberef).",
+    mainSiteCta: "Visit aglc.sa",
   },
   proposal: {
     eyebrow: "What you receive",
@@ -244,6 +381,14 @@ export const en: SiteContent = {
       "Total professional fees, exclusive of VAT — SAR 57,500",
       "Enclosure: Activity Matching & Licensing Table (SSIC, July 2025)",
     ],
+  },
+  tenders: {
+    eyebrow: "Free for new entrants",
+    title: "A licensed company needs work. AGLC Tenders helps you find it, free of charge.",
+    text: "Tender opportunities in Saudi Arabia, gathered in one place by Alahmari & Gashlan so that companies entering the market can start competing for contracts from the day they are registered.",
+    points: ["No charge for new entrants to the Saudi market", "Opportunities across sectors, in one place", "Our lawyers are on hand for bid documents, bonds and contract terms"],
+    cta: "Open AGLC Tenders",
+    url: TENDERS_URL,
   },
   residency: {
     eyebrow: "Premium Residency",
@@ -306,7 +451,31 @@ export const en: SiteContent = {
     cta: "Start application",
     whatsapp: "Message us on WhatsApp",
   },
-  footer: { legalName: "Al-Ahmari & Gashlan Lawyers & Legal Consultants", staff: "Staff sign-in", rights: "All rights reserved." },
+  footer: {
+    legalName: "Al-Ahmari & Gashlan Lawyers & Legal Consultants",
+    staff: "Staff sign-in",
+    rights: "All rights reserved.",
+    resourcesTitle: "Government resources",
+    resources: [
+      { label: "Ministry of Investment (MISA)", href: RESOURCE_LINKS[0].href },
+      { label: "Ministry of Commerce", href: RESOURCE_LINKS[1].href },
+      { label: "Premium Residency Center", href: RESOURCE_LINKS[2].href },
+      { label: "ZATCA", href: RESOURCE_LINKS[3].href },
+    ],
+    sitesTitle: "Alahmari & Gashlan",
+    privacy: "Privacy notice",
+  },
+  privacy: {
+    title: "Privacy notice",
+    updated: "Last updated: November 2026",
+    sections: [
+      { h: "Who we are", p: "Al-Ahmari & Gashlan Lawyers & Legal Consultants (Alahmari & Gashlan), Jeddah and Riyadh, Saudi Arabia. Contact: info@aglc.sa, +966 12 693 6418." },
+      { h: "What we collect", p: "When you apply or write to us we collect the details you provide: name, company, country, email, phone, the service you are interested in and the description of your plans." },
+      { h: "Why we use it", p: "To respond to your application, prepare a fee proposal, and, if you engage us, to provide legal services and meet our regulatory obligations. We do not sell personal data and we do not use it for unrelated marketing." },
+      { h: "Where it is kept", p: "On the firm's request-management system, accessible only to our staff, and in our email and document systems. Applications that do not lead to an engagement are retained for as long as needed to answer follow-up questions and then deleted." },
+      { h: "Your rights", p: "Under the Saudi Personal Data Protection Law you may ask what personal data we hold about you, request corrections or deletion, and withdraw consent where processing is based on it. Write to info@aglc.sa." },
+    ],
+  },
   apply: {
     title: "Start your application",
     intro: "Five minutes. You receive a reference number now and a fixed-fee proposal from a lawyer within two business days.",
@@ -325,6 +494,8 @@ export const en: SiteContent = {
     activitiesPlaceholder: "e.g. mechanical and electrical engineering design services",
     details: "Tell us about your plans",
     detailsPlaceholder: "Your business, where the parent company is licensed, timing, staff you expect to relocate, and any questions.",
+    consent: "I consent to Alahmari & Gashlan processing my personal data to respond to this application, as described in the",
+    consentLink: "privacy notice (Saudi PDPL)",
     submit: "Send application",
     sending: "Sending…",
     privacy: "Your details are used only to respond to this application.",
@@ -345,7 +516,7 @@ export const ar: SiteContent = {
     title: "تأسيس الشركات في السعودية للمستثمرين الأجانب",
     description: "مكتب محاماة سعودي مرخّص يؤسس شركتك — ترخيص وزارة الاستثمار والسجل التجاري والحساب البنكي والتأشيرات — بأتعاب ثابتة يُتفق عليها كتابةً قبل بدء أي عمل.",
   },
-  nav: { process: "كيف نعمل", fees: "الأتعاب", why: "لماذا نحن", residency: "الإقامة المميزة", faq: "الأسئلة الشائعة", contact: "تواصل معنا", cta: "ابدأ طلبك", staff: "دخول الموظفين" },
+  nav: { process: "كيف نعمل", fees: "الأتعاب", why: "المكتب", tenders: "المنافسات", residency: "الإقامة المميزة", faq: "الأسئلة الشائعة", contact: "تواصل معنا", cta: "ابدأ طلبك", staff: "دخول الموظفين", mainSite: "aglc.sa" },
   hero: {
     eyebrow: "الأحمري وقشلان · محامون ومستشارون قانونيون · جدة والرياض",
     title: "تأسيس الشركات في المملكة العربية السعودية",
@@ -418,22 +589,73 @@ export const ar: SiteContent = {
     ],
     choose: "ابدأ بهذه الباقة",
     servicesTitle: "أو اختر خدمات منفردة",
-    servicesIntro: "خدمات التأسيس الأساسية بأسعار منفردة. أما الخدمات التنظيمية والبنكية والتأشيرات والخدمات المستمرة فتُسعّر في عرض الأتعاب.",
-    services: [
-      { code: "INC-01", name: "طلب ترخيص وزارة الاستثمار", price: 8000 },
-      { code: "INC-02", name: "صياغة عقد التأسيس", price: 5000 },
-      { code: "INC-03", name: "توثيق عقد التأسيس", price: 2500 },
-      { code: "INC-04", name: "السجل التجاري", price: 3500 },
-      { code: "INC-05", name: "عضوية الغرفة التجارية", price: 2000 },
-      { code: "INC-06", name: "تسجيل العنوان الوطني", price: 1500 },
-      { code: "INC-07", name: "النشر في الجريدة الرسمية", price: 1500 },
-      { code: "INC-08", name: "استشارة في هيكلة الشركة", price: 4000 },
+    servicesIntro: "اثنتان وثلاثون خدمة بأسعار منفردة، ليُبنى عرض الأتعاب مما تحتاجه تحديدًا.",
+    groups: [
+      {
+        title: "التأسيس الأساسي",
+        services: [
+          { code: "INC-01", name: "طلب ترخيص وزارة الاستثمار", price: 8000 },
+          { code: "INC-02", name: "صياغة عقد التأسيس", price: 5000 },
+          { code: "INC-03", name: "توثيق عقد التأسيس", price: 2500 },
+          { code: "INC-04", name: "السجل التجاري", price: 3500 },
+          { code: "INC-05", name: "عضوية الغرفة التجارية", price: 2000 },
+          { code: "INC-06", name: "تسجيل العنوان الوطني", price: 1500 },
+          { code: "INC-07", name: "النشر في الجريدة الرسمية", price: 1500 },
+          { code: "INC-08", name: "استشارة في هيكلة الشركة", price: 4000 },
+        ],
+      },
+      {
+        title: "التسجيلات التنظيمية",
+        services: [
+          { code: "REG-01", name: "التسجيل في هيئة الزكاة والضريبة والجمارك (القيمة المضافة / الاستقطاع)", price: 3500 },
+          { code: "REG-02", name: "التسجيل في التأمينات الاجتماعية", price: 2500 },
+          { code: "REG-03", name: "التسجيل في منصة قوى (الموارد البشرية)", price: 2500 },
+          { code: "REG-04", name: "رخصة البلدية", price: 3000 },
+          { code: "REG-05", name: "تهيئة الالتزام بالتوطين (نطاقات)", price: 3500 },
+        ],
+      },
+      {
+        title: "الخدمات البنكية والمالية",
+        services: [
+          { code: "BNK-01", name: "فتح الحساب البنكي للشركة", price: null },
+          { code: "BNK-02", name: "تفعيل الخدمات البنكية الإلكترونية", price: 1500 },
+          { code: "BNK-03", name: "حساب بنكي إضافي (بنك ثانٍ)", price: 4500 },
+        ],
+      },
+      {
+        title: "التأشيرات والإقامة",
+        services: [
+          { code: "VIS-01", name: "طلب تأشيرة عمل", price: 5000, unit: "person" },
+          { code: "VIS-02", name: "إصدار الإقامة", price: 5000, unit: "person" },
+          { code: "VIS-03", name: "تنسيق الفحص الطبي", price: 1000, unit: "person" },
+          { code: "VIS-04", name: "نقل الكفالة", price: 3500, unit: "person" },
+          { code: "VIS-05", name: "تأشيرة الخروج والعودة", price: 1500, unit: "person" },
+          { code: "VIS-06", name: "المساندة في طلب الإقامة المميزة", price: 20000 },
+        ],
+      },
+      {
+        title: "خدمات مستمرة وإضافية",
+        services: [
+          { code: "ADD-01", name: "المحاسبة والالتزام الضريبي", price: 3500, unit: "month" },
+          { code: "ADD-02", name: "خدمات العلاقات الحكومية (PRO / GRO)", price: 4800, unit: "month" },
+          { code: "ADD-03", name: "تصديق المستندات وتوثيقها", price: 4000 },
+          { code: "ADD-04", name: "عنوان مكتب افتراضي", price: 6500, unit: "year" },
+          { code: "ADD-05", name: "تسجيل علامة تجارية", price: 6500, unit: "class" },
+          { code: "ADD-06", name: "مراجعة سنوية للالتزام النظامي", price: 12500, unit: "year" },
+          { code: "ADD-07", name: "تعديل بيانات الشركة (السجل / عقد التأسيس)", price: 5000, unit: "each" },
+          { code: "ADD-08", name: "المساندة في تجديد السجل التجاري", price: 3000, unit: "year" },
+          { code: "ADD-09", name: "المساندة في تجديد ترخيص وزارة الاستثمار", price: 4000, unit: "year" },
+          { code: "ADD-10", name: "المساندة في التصفية وشطب السجل", price: 15000 },
+        ],
+      },
     ],
+    onRequest: "ضمن باقة التأسيس الكامل",
+    units: { person: "/ للشخص", month: "/ شهريًا", year: "/ سنويًا", class: "/ للفئة", each: "لكل تعديل" },
     servicesNote: "الأسعار بالريال السعودي قبل الضريبة والرسوم الحكومية.",
     footnote: "الدفع: 50% عند توقيع عرض الأتعاب و50% عند الإنجاز. وإذا تبيّن في مرحلة الأهلية أن نشاطكم لا يمكن ترخيصه على المسار المقترح، فلا تُستحق إلا أتعاب تلك المرحلة.",
   },
   why: {
-    eyebrow: "لماذا مكتب محاماة",
+    eyebrow: "المكتب",
     title: "مكتب محاماة مرخّص، لا وكيل تأسيس",
     points: [
       { title: "محامون يتولون ملفك", text: "الأحمري وقشلان مكتب محاماة سعودي. من يؤسس شركتك يستطيع أيضًا أن يقدّم لك رأيًا قانونيًا مكتوبًا في الهيكلة ورأس المال والترخيص والتوظيف." },
@@ -441,11 +663,40 @@ export const ar: SiteContent = {
       { title: "عرض أتعاب يُحاسَب عليه", text: "المراحل والأتعاب والجدول الزمني والمستندات المطلوبة في مستند واحد موقّع، مع جدول مطابقة الأنشطة مرفقًا." },
       { title: "جهة اتصال واحدة", text: "مستشار محدد بالاسم من أول رسالة حتى فتح الحساب البنكي، مع تقرير مكتوب عن كل خطوة." },
     ],
-    teamTitle: "الشركاء",
-    team: [
-      { name: "المحامي محمد أحمد قشلان", role: "الشريك المؤسس" },
-      { name: "ماجد الأحمري", role: "شريك مؤسس والمدير العام" },
+    firmTitle: "جزء من مكتب محاماة سعودي متكامل",
+    firmText: "خدمة التأسيس إحدى ممارسات الأحمري وقشلان، مكتب محاماة في جدة والرياض يقدّم محاموه الاستشارة في شؤون الشركات والتمويل والعمل والضرائب والعقارات وتسوية المنازعات. فالشركة التي نؤسسها لك يقف خلفها مكتب محاماة كلما نمت.",
+    practiceTitle: "مجالات الممارسة",
+    practiceAreas: [
+      "الشركات والأعمال التجارية",
+      "صياغة العقود والتفاوض",
+      "المصارف والتمويل وأسواق المال",
+      "تسوية المنازعات والتحكيم الدولي",
+      "المشاريع الكبرى والاستثمار",
+      "العمل والعمال",
+      "الحوكمة والالتزام",
+      "القانون الرياضي",
+      "القانون الصحي",
+      "الضرائب والتجارة الدولية",
+      "الملكية الفكرية والتقنية",
+      "العقارات",
     ],
+    foundersTitle: "المؤسسون",
+    founders: [
+      {
+        name: "ماجد بن ظافر الأحمري",
+        role: "شريك مؤسس والمدير العام",
+        credentials: "بكالوريوس القانون من جامعة الملك عبدالعزيز. متخصص في القانون الإداري والتجاري والمالي والرياضي، وفي الترافع أمام المحاكم التجارية والإدارية والجزائية واللجان القضائية.",
+        photo: FOUNDER_PHOTOS.majed,
+      },
+      {
+        name: "محمد أحمد قشلان",
+        role: "شريك مؤسس",
+        credentials: "ماجستير وبكالوريوس في القانون من المملكة المتحدة. متخصص في قانون الشركات والأعمال: الحوكمة وأسواق المال والتقنية المالية والاستشارات الدولية لعملاء محليين ودوليين.",
+        photo: FOUNDER_PHOTOS.mohamed,
+      },
+    ],
+    teamText: "يضم فريق المستشارين عبدالله مهدي سلامة (أكثر من 18 عامًا في الاندماج والاستحواذ واسترداد الأموال عبر الحدود)، ومحمد سعيد عباس (أكثر من 19 عامًا في التحكيم التجاري الدولي)، وهوازن أحمد سعيد (أكثر من 12 عامًا في قانون الشركات والملكية الفكرية)، وإبراهيم أحمد رزق (ماجستير في القانون من جامعة ميامي، ومستشار قانوني سابق في أرامكو لوبريف).",
+    mainSiteCta: "زيارة aglc.sa",
   },
   proposal: {
     eyebrow: "ما الذي تستلمه",
@@ -460,6 +711,14 @@ export const ar: SiteContent = {
       "إجمالي الأتعاب المهنية غير شاملة الضريبة — 57,500 ر.س",
       "المرفق: جدول مطابقة الأنشطة والتراخيص (التصنيف الوطني، يوليو 2025)",
     ],
+  },
+  tenders: {
+    eyebrow: "مجانًا للشركات الجديدة",
+    title: "الشركة المرخّصة تحتاج إلى أعمال. منصة منافسات الأحمري وقشلان تساعدك على إيجادها مجانًا.",
+    text: "فرص المنافسات والعطاءات في المملكة مجموعة في مكان واحد من الأحمري وقشلان، ليتمكن الداخلون الجدد إلى السوق من المنافسة على العقود منذ يوم تسجيل شركاتهم.",
+    points: ["بلا رسوم للشركات الجديدة في السوق السعودية", "فرص من مختلف القطاعات في مكان واحد", "محامونا جاهزون لمساندتكم في مستندات العطاء والضمانات وشروط العقود"],
+    cta: "افتح منصة المنافسات",
+    url: TENDERS_URL,
   },
   residency: {
     eyebrow: "الإقامة المميزة",
@@ -498,7 +757,31 @@ export const ar: SiteContent = {
     cta: "ابدأ طلبك",
     whatsapp: "راسلنا عبر واتساب",
   },
-  footer: { legalName: "الأحمري وقشلان محامون ومستشارون قانونيون", staff: "دخول الموظفين", rights: "جميع الحقوق محفوظة." },
+  footer: {
+    legalName: "الأحمري وقشلان محامون ومستشارون قانونيون",
+    staff: "دخول الموظفين",
+    rights: "جميع الحقوق محفوظة.",
+    resourcesTitle: "جهات حكومية",
+    resources: [
+      { label: "وزارة الاستثمار", href: RESOURCE_LINKS[0].href },
+      { label: "وزارة التجارة", href: RESOURCE_LINKS[1].href },
+      { label: "مركز الإقامة المميزة", href: RESOURCE_LINKS[2].href },
+      { label: "هيئة الزكاة والضريبة والجمارك", href: RESOURCE_LINKS[3].href },
+    ],
+    sitesTitle: "الأحمري وقشلان",
+    privacy: "إشعار الخصوصية",
+  },
+  privacy: {
+    title: "إشعار الخصوصية",
+    updated: "آخر تحديث: نوفمبر 2026",
+    sections: [
+      { h: "من نحن", p: "الأحمري وقشلان محامون ومستشارون قانونيون، جدة والرياض، المملكة العربية السعودية. للتواصل: info@aglc.sa، +966 12 693 6418." },
+      { h: "ما الذي نجمعه", p: "عندما تقدّم طلبًا أو تراسلنا نجمع البيانات التي تزوّدنا بها: الاسم والشركة والدولة والبريد الإلكتروني والهاتف والخدمة التي تهمّك ووصف خططك." },
+      { h: "لماذا نستخدمها", p: "للرد على طلبك وإعداد عرض الأتعاب، وإذا تعاقدت معنا فلتقديم الخدمات القانونية والوفاء بالتزاماتنا النظامية. لا نبيع البيانات الشخصية ولا نستخدمها لأغراض تسويقية غير ذات صلة." },
+      { h: "أين تُحفظ", p: "في نظام إدارة الطلبات الخاص بالمكتب الذي لا يصل إليه إلا موظفونا، وفي أنظمة البريد والمستندات لدينا. وتُحفظ الطلبات التي لا تنتهي بتعاقد للمدة اللازمة للرد على الاستفسارات اللاحقة ثم تُحذف." },
+      { h: "حقوقك", p: "بموجب نظام حماية البيانات الشخصية السعودي يمكنك معرفة ما نحتفظ به من بياناتك الشخصية، وطلب تصحيحها أو حذفها، وسحب الموافقة حيثما كانت المعالجة قائمة عليها. راسلنا على info@aglc.sa." },
+    ],
+  },
   apply: {
     title: "ابدأ طلبك",
     intro: "خمس دقائق. تحصل على رقم مرجعي الآن وعلى عرض أتعاب ثابت من محامٍ خلال يومي عمل.",
@@ -517,6 +800,8 @@ export const ar: SiteContent = {
     activitiesPlaceholder: "مثال: خدمات التصميم الهندسي الميكانيكي والكهربائي",
     details: "أخبرنا عن خططك",
     detailsPlaceholder: "نشاطكم، وأين الشركة الأم مرخّصة، والتوقيت، والموظفون الذين تتوقعون نقلهم، وأي أسئلة.",
+    consent: "أوافق على معالجة الأحمري وقشلان لبياناتي الشخصية للرد على هذا الطلب وفق",
+    consentLink: "إشعار الخصوصية (نظام حماية البيانات الشخصية)",
     submit: "إرسال الطلب",
     sending: "جارٍ الإرسال…",
     privacy: "تُستخدم بياناتك للرد على هذا الطلب فقط.",
