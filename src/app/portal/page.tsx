@@ -36,7 +36,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
     { key: "all", label: "All", count: Object.values(counts).reduce((a, b) => a + b, 0) },
   ];
 
-  const href = (key: string, mineFlag = mine) => `/?status=${key}${mineFlag ? "&mine=1" : ""}`;
+  const href = (key: string, mineFlag = mine) => `/portal?status=${key}${mineFlag ? "&mine=1" : ""}`;
 
   return (
     <div className="mx-auto max-w-7xl">
@@ -47,7 +47,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
             {openCount} open · {counts.new} new · {counts.awaiting_client} waiting on clients
           </p>
         </div>
-        <Link href="/requests/new" className="btn-primary">
+        <Link href="/portal/requests/new" className="btn-primary">
           <PlusCircle className="size-4" />
           New request
         </Link>
@@ -62,7 +62,7 @@ export default async function QueuePage({ searchParams }: { searchParams: Promis
           <span>
             {items.length} result{items.length === 1 ? "" : "s"} for <strong>“{q}”</strong>
           </span>
-          <Link href="/" className="btn-ghost btn-sm">
+          <Link href="/portal" className="btn-ghost btn-sm">
             Back to queue
           </Link>
         </div>

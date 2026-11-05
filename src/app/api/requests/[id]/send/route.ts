@@ -66,8 +66,8 @@ export async function POST(request: Request, ctx: { params: Promise<{ id: string
     if (proposalIds.size > 0) await setStatus(id, "proposal_sent", me.id);
     else if (req.status === "new" || req.status === "in_review") await setStatus(id, "awaiting_client", me.id);
 
-    revalidatePath(`/requests/${id}`);
-    revalidatePath("/");
+    revalidatePath(`/portal/requests/${id}`);
+    revalidatePath("/portal");
 
     if (emlBytes) {
       const filename = `${req.ref} - ${subject.replace(/[\\/:*?"<>|]+/g, " ").slice(0, 80)}.eml`;

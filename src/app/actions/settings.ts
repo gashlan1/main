@@ -37,14 +37,14 @@ export async function saveSentenceAction(formData: FormData): Promise<void> {
     sortOrder: Number(formData.get("sortOrder")) || undefined,
     active: formData.get("active") !== "off",
   });
-  revalidatePath("/settings");
+  revalidatePath("/portal/settings");
 }
 
 export async function deleteSentenceAction(formData: FormData): Promise<void> {
   await requireUserOrThrow();
   const id = str(formData, "id");
   if (id) await deleteQuickSentence(id);
-  revalidatePath("/settings");
+  revalidatePath("/portal/settings");
 }
 
 export async function saveServiceAction(formData: FormData): Promise<void> {
@@ -73,14 +73,14 @@ export async function saveServiceAction(formData: FormData): Promise<void> {
     sortOrder: Number(formData.get("sortOrder")) || undefined,
     active: formData.get("active") !== "off",
   });
-  revalidatePath("/settings");
+  revalidatePath("/portal/settings");
 }
 
 export async function deleteServiceAction(formData: FormData): Promise<void> {
   await requireUserOrThrow();
   const id = str(formData, "id");
   if (id) await deleteService(id);
-  revalidatePath("/settings");
+  revalidatePath("/portal/settings");
 }
 
 export async function saveActivityAction(formData: FormData): Promise<void> {
@@ -96,14 +96,14 @@ export async function saveActivityAction(formData: FormData): Promise<void> {
     remarks: str(formData, "remarks") || null,
     active: formData.get("active") !== "off",
   });
-  revalidatePath("/settings");
+  revalidatePath("/portal/settings");
 }
 
 export async function deleteActivityAction(formData: FormData): Promise<void> {
   await requireUserOrThrow();
   const id = str(formData, "id");
   if (id) await deleteActivity(id);
-  revalidatePath("/settings");
+  revalidatePath("/portal/settings");
 }
 
 export type TeamState = { error?: string; ok?: string } | undefined;
@@ -121,7 +121,7 @@ export async function createUserAction(_prev: TeamState, formData: FormData): Pr
   } catch {
     return { error: "That email is already registered." };
   }
-  revalidatePath("/settings");
+  revalidatePath("/portal/settings");
   return { ok: `${name} can now sign in.` };
 }
 
@@ -130,7 +130,7 @@ export async function setUserActiveAction(formData: FormData): Promise<void> {
   const id = str(formData, "id");
   if (!id || id === me.id) return;
   await setUserActive(id, formData.get("active") === "1");
-  revalidatePath("/settings");
+  revalidatePath("/portal/settings");
 }
 
 export async function resetPasswordAction(_prev: TeamState, formData: FormData): Promise<TeamState> {

@@ -15,8 +15,8 @@ import {
   type RequestPatch,
 } from "@/lib/requests";
 function refresh(requestId?: string) {
-  revalidatePath("/");
-  if (requestId) revalidatePath(`/requests/${requestId}`);
+  revalidatePath("/portal");
+  if (requestId) revalidatePath(`/portal/requests/${requestId}`);
 }
 
 export async function setStatusAction(requestId: string, status: RequestStatus): Promise<void> {
@@ -122,5 +122,5 @@ export async function createRequestAction(_prev: CreateRequestState, formData: F
     me.id,
   );
   refresh(row.id);
-  redirect(`/requests/${row.id}`);
+  redirect(`/portal/requests/${row.id}`);
 }

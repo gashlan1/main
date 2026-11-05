@@ -10,9 +10,9 @@ import type { SessionUser } from "@/lib/auth";
 import { FIRM } from "@/lib/firm";
 
 const NAV = [
-  { href: "/", label: "Requests", icon: Inbox, match: (p: string) => p === "/" || p.startsWith("/requests/") },
-  { href: "/requests/new", label: "New request", icon: PlusCircle, match: (p: string) => p === "/requests/new" },
-  { href: "/settings", label: "Settings", icon: Settings, match: (p: string) => p.startsWith("/settings") },
+  { href: "/portal", label: "Requests", icon: Inbox, match: (p: string) => p === "/portal" || p.startsWith("/portal/requests/") },
+  { href: "/portal/requests/new", label: "New request", icon: PlusCircle, match: (p: string) => p === "/portal/requests/new" },
+  { href: "/portal/settings", label: "Settings", icon: Settings, match: (p: string) => p.startsWith("/portal/settings") },
 ];
 
 export function Sidebar({ user }: { user: SessionUser }) {
@@ -36,9 +36,9 @@ export function Sidebar({ user }: { user: SessionUser }) {
           </Link>
         );
       })}
-      <a href="/intake" target="_blank" rel="noreferrer" className="nav-link mt-2">
+      <a href="/" target="_blank" rel="noreferrer" className="nav-link mt-2">
         <Globe className="size-4" />
-        Client inquiry form
+        Public website
       </a>
     </nav>
   );
@@ -60,7 +60,7 @@ export function Sidebar({ user }: { user: SessionUser }) {
     <>
       {/* Mobile top bar */}
       <div className="fixed inset-x-0 top-0 z-30 flex h-14 items-center justify-between bg-ink-950 px-4 lg:hidden">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/portal" className="flex items-center gap-2">
           <Image src="/brand/logo-white.png" alt={FIRM.shortName} width={96} height={36} />
         </Link>
         <button type="button" onClick={() => setOpen((v) => !v)} className="text-white" aria-label="Toggle menu">
@@ -77,7 +77,7 @@ export function Sidebar({ user }: { user: SessionUser }) {
 
       {/* Desktop sidebar */}
       <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col bg-ink-950 px-4 py-6 lg:flex">
-        <Link href="/" className="mb-8 block px-2">
+        <Link href="/portal" className="mb-8 block px-2">
           <Image src="/brand/logo-white.png" alt={FIRM.name} width={150} height={56} priority />
           <span className="mt-2 block text-[11px] font-semibold uppercase tracking-widest text-ink-500">
             {FIRM.portalName} · staff

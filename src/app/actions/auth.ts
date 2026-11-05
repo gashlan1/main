@@ -22,7 +22,7 @@ export async function login(_prev: LoginState, formData: FormData): Promise<Logi
   if (!ok) return { error: "Email or password is incorrect." };
 
   await setSessionCookie(user.id);
-  redirect(next.startsWith("/") && !next.startsWith("//") ? next : "/");
+  redirect(next.startsWith("/") && !next.startsWith("//") ? next : "/portal");
 }
 
 export async function logout(): Promise<void> {

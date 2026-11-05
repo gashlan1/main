@@ -26,6 +26,25 @@
   --color-ink-200: #dcdee3;
   --color-ink-100: #eceef1;
   --color-ink-50: #f6f7f9;
+
+  /* Public website: the firm's navy and gold, on warm paper. */
+  --color-navy-950: #0b1120;
+  --color-navy-900: #111a2e;
+  --color-navy-800: #182440;
+  --color-navy-700: #22325a;
+  --color-navy-100: #e6eaf3;
+  --color-gold-200: #efe0b1;
+  --color-gold-300: #e3c97a;
+  --color-gold-400: #d2b05a;
+  --color-gold-500: #b8923a;
+  --color-gold-600: #957428;
+  --color-gold-700: #6e551c;
+  --color-paper-50: #fbfaf7;
+  --color-paper-100: #f4f1ea;
+  --color-paper-200: #e9e4d8;
+
+  --font-display: var(--font-playfair), "Times New Roman", Georgia, serif;
+  --font-arabic: var(--font-plex-arabic), "Segoe UI", Tahoma, sans-serif;
 }
 
 :root {
@@ -96,6 +115,58 @@ body {
   .tick {
     @apply size-5 shrink-0 cursor-pointer rounded border-ink-300 text-brand-700 focus:ring-brand-500;
   }
+
+  /* Public website */
+  .site {
+    @apply bg-paper-50 text-navy-900;
+  }
+  .site-wrap {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+  .site-btn,
+  .site-btn-gold,
+  .site-btn-outline,
+  .site-btn-light {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-[15px] font-semibold transition-colors
+      focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500;
+  }
+  .site-btn-gold {
+    @apply bg-gold-500 text-navy-950 hover:bg-gold-400;
+  }
+  .site-btn-outline {
+    @apply border border-navy-900/20 text-navy-900 hover:border-navy-900 hover:bg-navy-900 hover:text-white;
+  }
+  .site-btn-light {
+    @apply border border-white/25 text-white hover:bg-white/10;
+  }
+  .site-eyebrow {
+    @apply mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-gold-600;
+  }
+  .site-eyebrow::before {
+    content: "";
+    @apply inline-block h-px w-6 bg-gold-500;
+  }
+  .site-h2 {
+    @apply font-display text-3xl font-semibold leading-tight text-navy-900 sm:text-4xl;
+    text-wrap: balance;
+  }
+  .site-lead {
+    @apply mt-4 max-w-2xl text-[17px] leading-relaxed text-navy-900/75;
+  }
+  .site-card {
+    @apply rounded-xl border border-paper-200 bg-white p-6 shadow-[0_1px_2px_rgba(17,26,46,0.04)];
+  }
+}
+
+[dir="rtl"] .site {
+  font-family: var(--font-arabic);
+}
+[dir="rtl"] .site .font-display {
+  font-family: var(--font-arabic);
+  font-weight: 700;
+}
+[dir="rtl"] .site-eyebrow {
+  letter-spacing: 0;
 }
 
 .prose-email {

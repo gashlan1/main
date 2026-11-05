@@ -25,7 +25,7 @@ export function RequestHeader({ request, staff }: { request: RequestRow & { assi
     <header className="card p-5">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="min-w-0">
-          <Link href="/" className="mb-2 inline-flex items-center gap-1 text-xs font-medium text-ink-500 hover:text-ink-900">
+          <Link href="/portal" className="mb-2 inline-flex items-center gap-1 text-xs font-medium text-ink-500 hover:text-ink-900">
             <ArrowLeft className="size-3.5" />
             All requests
           </Link>

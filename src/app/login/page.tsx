@@ -12,7 +12,7 @@ export default async function LoginPage({
   searchParams: Promise<{ next?: string }>;
 }) {
   const user = await getCurrentUser();
-  if (user) redirect("/");
+  if (user) redirect("/portal");
   const { next } = await searchParams;
 
   return (

@@ -36,8 +36,8 @@ export async function POST(request: Request, ctx: { params: Promise<{ id: string
         }),
       );
     }
-    revalidatePath(`/requests/${id}`);
-    revalidatePath("/");
+    revalidatePath(`/portal/requests/${id}`);
+    revalidatePath("/portal");
     return NextResponse.json({ documents: stored });
   } catch (err) {
     if (err instanceof UnauthorizedError) return NextResponse.json({ error: "Not signed in" }, { status: 401 });

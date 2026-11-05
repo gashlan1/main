@@ -31,7 +31,7 @@ export default async function SettingsPage({ searchParams }: { searchParams: Pro
         {TABS.map((t) => (
           <Link
             key={t.key}
-            href={`/settings?tab=${t.key}`}
+            href={`/portal/settings?tab=${t.key}`}
             className={`-mb-px border-b-2 px-4 py-2.5 text-sm font-medium ${tab === t.key ? "border-brand-700 text-brand-800" : "border-transparent text-ink-500 hover:text-ink-800"}`}
           >
             {t.label}

@@ -3,10 +3,11 @@ import { revalidatePath } from "next/cache";
 import { SERVICE_TYPES } from "@/lib/firm";
 import { notifyNewInquiry } from "@/lib/mailer";
 import { createRequest } from "@/lib/requests";
+import { PACKAGE_LABELS } from "@/lib/site-content";
 
 /**
- * Public inquiry endpoint used by /intake and by the firm's website form.
- * Accepts JSON or form-encoded bodies.
+ * Public application endpoint used by /apply (English and Arabic) and by any
+ * external form. Accepts JSON or form-encoded bodies.
  */
 
 const WINDOW_MS = 60 * 60 * 1000;
@@ -56,24 +57,36 @@ export async function POST(request: Request) {
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return NextResponse.json({ error: "Enter a valid email address." }, { status: 400 });
 
-  const serviceType = get("serviceType");
+  const serviceType = get("serviceType") || (SERVICE_TYPES as readonly string[])[SERVICE_TYPES.length - 1];
+  const packageKey = get("package") as keyof typeof PACKAGE_LABELS;
+  const packageLabel = PACKAGE_LABELS[packageKey] ?? "";
+  const legalForm = get("legalForm");
+  const lang = get("lang") === "ar" ? "Arabic" : "English";
+
+  const extras = [
+    packageLabel ? `Package chosen: ${packageLabel}` : "Package: not chosen (asked for advice)",
+    legalForm ? `Legal form: ${legalForm}` : "",
+    `Submitted in ${lang} via the website.`,
+  ].filter(Boolean);
+
+  const company = get("company");
   const row = await createRequest(
     {
       source: "website",
       salutation: ["Mr.", "Ms.", "Dr.", "Eng."].includes(get("salutation")) ? get("salutation") : null,
       contactName,
-      company: get("company") || null,
+      company: company || null,
       email,
       phone: get("phone") || null,
       country: get("country") || null,
-      serviceType: serviceType || (SERVICE_TYPES as readonly string[])[SERVICE_TYPES.length - 1],
+      serviceType,
       activities: get("activities") || null,
-      details,
-      summary: get("company") ? `${get("company")} — ${serviceType || "inquiry"}` : null,
+      details: `${details}\n\n— Application details —\n${extras.join("\n")}`,
+      summary: `${company || contactName} — ${packageLabel ? packageLabel.replace(/ \(.*\)$/, "") : serviceType}`,
     },
     null,
   );
-  revalidatePath("/");
+  revalidatePath("/portal");
 
   const base = process.env.APP_URL || new URL(request.url).origin;
   await notifyNewInquiry({
@@ -82,7 +95,7 @@ export async function POST(request: Request) {
     company: row.company,
     serviceType: row.serviceType,
     summary: row.summary,
-    link: `${base}/requests/${row.id}`,
+    link: `${base}/portal/requests/${row.id}`,
   });
 
   return NextResponse.json({ ok: true, ref: row.ref });

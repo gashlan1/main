@@ -33,7 +33,7 @@ export function RequestList({
         return (
           <Link
             key={item.id}
-            href={`/requests/${item.id}`}
+            href={`/portal/requests/${item.id}`}
             className="grid grid-cols-1 gap-2 px-5 py-4 transition-colors hover:bg-brand-50/40 lg:grid-cols-[150px_1fr_1fr_150px_180px_120px] lg:items-center lg:gap-4"
           >
             <div>

@@ -21,7 +21,7 @@ export function SearchBar({ initialQuery = "" }: { initialQuery?: string }) {
     e.preventDefault();
     const q = query.trim();
     if (mode === "keyword") {
-      startTransition(() => router.push(q ? `/?q=${encodeURIComponent(q)}` : "/"));
+      startTransition(() => router.push(q ? `/portal?q=${encodeURIComponent(q)}` : "/portal"));
       return;
     }
     if (!q) return;
@@ -70,7 +70,7 @@ export function SearchBar({ initialQuery = "" }: { initialQuery?: string }) {
               onClick={() => {
                 setQuery("");
                 setAiState(null);
-                if (mode === "keyword") router.push("/");
+                if (mode === "keyword") router.push("/portal");
               }}
               className="absolute right-2 top-1/2 -translate-y-1/2 text-ink-400 hover:text-ink-700"
             >
@@ -118,7 +118,7 @@ export function SearchBar({ initialQuery = "" }: { initialQuery?: string }) {
             <ul className="mt-3 divide-y divide-ink-100 border-t border-ink-100">
               {aiState.hits.map((h) => (
                 <li key={h.id}>
-                  <Link href={`/requests/${h.id}`} className="flex flex-wrap items-center gap-3 py-2 text-sm hover:text-brand-800">
+                  <Link href={`/portal/requests/${h.id}`} className="flex flex-wrap items-center gap-3 py-2 text-sm hover:text-brand-800">
                     <span className="font-mono font-semibold">{h.ref}</span>
                     <span>
                       {h.contactName}

@@ -1,17 +1,18 @@
-# inc.aglc.sa — staff portal
+# inc.aglc.sa — website and staff portal
 
-Request desk for Al-Ahmari Gashlan Legal Consulting's incorporation practice. Client inquiries land in a queue; an associate works each one on a single page: reads the inquiry, uploads documents, builds the fixed-fee proposal with tickboxes, lets AI draft the reply, and sends it (or opens it in Outlook) without leaving the portal.
+The public website for Al-Ahmari Gashlan Legal Consulting's incorporation practice and the request desk behind it. Visitors read about the service, see the fixed fees and apply; every application lands in a queue where an associate works it on a single page: reads the inquiry, uploads documents, builds the fixed-fee proposal with tickboxes, lets AI draft the reply, and sends it (or opens it in Outlook) without leaving the portal.
 
 ## What it does
 
-- **Queue** — every request with status, assignee and "waiting on us / with client" chips. Keyword search over everything (clients, companies, countries, activities, emails, notes) and **Ask AI** for natural-language questions such as *"which engineering inquiries are waiting on us?"*.
+- **Website** (`/`, Arabic at `/ar`) — hero with the firm's proposal format, how it works, the three packages and core service prices, why a law firm, Premium Residency, FAQ and contact. **Apply** (`/apply`, `/ar/apply`) creates the request with the chosen package and legal form, gives the visitor an `INQ-YYYY-X-XXXX` reference and notifies staff by email when SMTP is configured. Copy for both languages lives in `src/lib/site-content.ts`.
+- **Queue** (`/portal`) — every request with status, assignee and "waiting on us / with client" chips. Keyword search over everything (clients, companies, countries, activities, emails, notes) and **Ask AI** for natural-language questions such as *"which engineering inquiries are waiting on us?"*.
 - **Workbench** — one page per request:
   - request details and a clear **upload** area (drag-and-drop, per-category buttons: client documents, signed proposal, POA, other);
   - **one-click sentences** grouped by purpose (Opening, Proposal, Eligibility & route, Request information, Next steps, Status update, Closing). Clicking inserts the sentence at the cursor with the reference, fees, dates and names already filled in;
   - **Draft with AI** — streams a client-ready email in the firm's house style from the request, the timeline and the latest proposal; selected sentences are woven in;
   - send through SMTP, or download a ready **.eml** that opens in Outlook as a draft with the attachments in place; every email, note, upload and status change is logged on the timeline;
   - **Fee proposal builder** — tick the phases (fees, durations and scope bullets editable), tick the SSIC activities, adjust sections 2–8, and generate the letterhead PDFs: the Fixed-Fee Proposal and the Activity Matching & Licensing Table, in the same layout as the firm's October 2026 SEZ proposal. "Suggest with AI" pre-ticks phases and activities from the inquiry.
-- **Intake** — a public inquiry form at `/intake` (and a JSON endpoint at `POST /api/intake` for the website) creates requests with `INQ-YYYY-X-XXXX` references and notifies staff by email when SMTP is configured.
+- **Intake API** — `POST /api/intake` (JSON or form-encoded) is what the website's application form calls; any other form can post to it too. `/intake` redirects to `/apply`.
 - **Import from email** — drop a forwarded `.eml` (or paste the text) on *New request*; AI extracts the client, company, country, service and activities. Without an API key the headers are still parsed and pre-filled.
 - **Settings** — one-click sentences, the service catalog with fees, verified SSIC activities, staff accounts and passwords.
 
@@ -41,6 +42,7 @@ The seed includes the real `INQ-2026-J-DRVG` matter (Audax Bridges, SEZ engineer
 | `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `MAIL_FROM`, `MAIL_REPLY_TO` | Outgoing mail. Without SMTP the composer offers the `.eml` download and "Log as sent". |
 | `MAIL_NOTIFY` | Address that receives new-inquiry notifications (defaults to info@aglc.sa). |
 | `APP_URL` | Public URL used in notification links. |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Optional; shows a "Message us on WhatsApp" button on the website (international format, e.g. 9665xxxxxxxx). |
 
 ### Deploying
 
@@ -63,13 +65,16 @@ For serverless hosts (Vercel, Netlify) point `DATABASE_URL` at Turso and keep up
 ## Layout
 
 ```
-src/app/(portal)/            queue, request workbench, new request, settings (staff only)
-src/app/login, src/app/intake  public pages
-src/app/api/                 uploads, document downloads, AI drafting/search/suggest/extract, proposal PDFs, send, intake
-src/app/actions/             server actions (auth, requests, settings)
-src/components/workbench/    header, summary, documents panel, timeline, composer, proposal builder
-src/lib/                     auth/session, requests + full-text search, documents, proposals, PDF (react-pdf), AI (Anthropic SDK), mailer
-src/db/                      Drizzle schema, libSQL client (tables created on first use), seed
+src/app/page.tsx, src/app/ar/   public website (English, Arabic)
+src/app/apply, src/app/ar/apply application form
+src/app/portal/                 queue, request workbench, new request, settings (staff only)
+src/app/login                   staff sign-in
+src/app/api/                    uploads, document downloads, AI drafting/search/suggest/extract, proposal PDFs, send, intake
+src/app/actions/                server actions (auth, requests, settings)
+src/components/site/            website header, footer, home page, application form
+src/components/workbench/       header, summary, documents panel, timeline, composer, proposal builder
+src/lib/                        auth/session, requests + full-text search, documents, proposals, PDF (react-pdf), AI (Anthropic SDK), mailer, site copy
+src/db/                         Drizzle schema, libSQL client (tables created on first use), seed
 ```
 
 ## Notes for the firm

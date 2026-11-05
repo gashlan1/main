@@ -20,8 +20,8 @@ export async function POST(request: Request, ctx: { params: Promise<{ id: string
     }
 
     const { proposal, attachments } = await createProposalVersion(req, parsed.data, me.id);
-    revalidatePath(`/requests/${id}`);
-    revalidatePath("/");
+    revalidatePath(`/portal/requests/${id}`);
+    revalidatePath("/portal");
     return NextResponse.json({ proposalId: proposal.id, version: proposal.version, docIds: attachments.map((a) => a.id) });
   } catch (err) {
     if (err instanceof UnauthorizedError) return NextResponse.json({ error: "Not signed in" }, { status: 401 });
