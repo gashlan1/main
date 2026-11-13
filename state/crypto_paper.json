@@ -2,9 +2,9 @@
   "cash": 10000,
   "positions": {},
   "last_candle": {
-    "BTC/USD": 1794528000000,
-    "ETH/USD": 1794528000000,
-    "SOL/USD": 1794528000000
+    "BTC/USD": 1794556800000,
+    "ETH/USD": 1794556800000,
+    "SOL/USD": 1794556800000
   },
   "day": "2026-11-13",
   "day_start_equity": 10000
