@@ -70,8 +70,9 @@ def sma_series(values, n):
     return out
 
 
-def run(daily, fee_pct, use_mom, start):
-    """Trade from index `start` (earlier bars only warm the indicators). Returns stats."""
+def run(daily, fee_pct, use_mom, start, with_curve=False):
+    """Trade from index `start` (earlier bars only warm the indicators). Returns stats,
+    plus the daily equity curve under "curve" when with_curve is set."""
     fee = fee_pct / 100
     closes = [d[4] for d in daily]
     sma = sma_series(closes, SMA)
@@ -100,7 +101,8 @@ def run(daily, fee_pct, use_mom, start):
         peak = max(peak, v)
         dd = max(dd, (peak - v) / peak * 100)
     years = (daily[-1][0] - daily[start][0]) / 86_400_000 / 365.25
-    return {
+    extra = {"curve": curve} if with_curve else {}
+    return extra | {
         "return_pct": round((final / EQUITY - 1) * 100, 2),
         "cagr_pct": round(((final / EQUITY) ** (1 / years) - 1) * 100, 2) if years > 0.5 else None,
         "max_drawdown_pct": round(dd, 2),
