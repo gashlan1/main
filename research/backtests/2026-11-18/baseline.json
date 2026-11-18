@@ -1,0 +1,346 @@
+{
+ "_code": {
+  "strategy.py": "99349a8dc2e3f2978c1dc90e4e5fed131b905c4efd552945e2e4f0baeea05677",
+  "backtest.py": "9e06be743e3cc8a54e7366b848822217ef9aa6640ad441c9344937264442845e"
+ },
+ "BTC": {
+  "params": {
+   "fast_ema": 50,
+   "slow_ema": 200,
+   "rsi_period": 14,
+   "rsi_dip": 40,
+   "rsi_entry": 50,
+   "dip_lookback": 6,
+   "atr_period": 14,
+   "stop_atr": 2.0,
+   "target_atr": 4.0,
+   "trail_atr": 3.0,
+   "risk_pct": 1.0,
+   "max_position_pct": 25.0
+  },
+  "fee_pct": 0.31,
+  "bars_total": 12780,
+  "split_index": 8946,
+  "split_bar": "2025-01-31 00:00",
+  "windows": {
+   "full": {
+    "start": "2021-01-01 00:00",
+    "end": "2026-10-31 20:00",
+    "bars": 12780,
+    "warmup_bars_prepended": 0,
+    "result": {
+     "trades": 71,
+     "return_pct": -2.96,
+     "max_drawdown_pct": 8.79,
+     "win_rate_pct": 33.8,
+     "profit_factor": 1.08,
+     "avg_trade": 3.22,
+     "final_equity": 9704.14,
+     "exits": {
+      "stop": 41,
+      "target": 21,
+      "trend_break": 9
+     },
+     "too_few_trades": false
+    }
+   },
+   "in_sample": {
+    "start": "2021-01-01 00:00",
+    "end": "2025-01-30 20:00",
+    "bars": 8946,
+    "warmup_bars_prepended": 0,
+    "result": {
+     "trades": 48,
+     "return_pct": 0.23,
+     "max_drawdown_pct": 8.79,
+     "win_rate_pct": 35.4,
+     "profit_factor": 1.19,
+     "avg_trade": 7.75,
+     "final_equity": 10023.0,
+     "exits": {
+      "stop": 30,
+      "target": 15,
+      "trend_break": 3
+     },
+     "too_few_trades": false
+    }
+   },
+   "out_of_sample": {
+    "start": "2025-01-31 00:00",
+    "end": "2026-10-31 20:00",
+    "bars": 3834,
+    "warmup_bars_prepended": 201,
+    "result": {
+     "trades": 23,
+     "return_pct": -3.18,
+     "max_drawdown_pct": 3.58,
+     "win_rate_pct": 30.4,
+     "profit_factor": 0.8,
+     "avg_trade": -6.22,
+     "final_equity": 9681.88,
+     "exits": {
+      "stop": 11,
+      "target": 6,
+      "trend_break": 6
+     },
+     "too_few_trades": true
+    }
+   }
+  }
+ },
+ "ETH": {
+  "params": {
+   "fast_ema": 50,
+   "slow_ema": 200,
+   "rsi_period": 14,
+   "rsi_dip": 40,
+   "rsi_entry": 50,
+   "dip_lookback": 6,
+   "atr_period": 14,
+   "stop_atr": 2.0,
+   "target_atr": 4.0,
+   "trail_atr": 3.0,
+   "risk_pct": 1.0,
+   "max_position_pct": 25.0
+  },
+  "fee_pct": 0.31,
+  "bars_total": 12780,
+  "split_index": 8946,
+  "split_bar": "2025-01-31 00:00",
+  "windows": {
+   "full": {
+    "start": "2021-01-01 00:00",
+    "end": "2026-10-31 20:00",
+    "bars": 12780,
+    "warmup_bars_prepended": 0,
+    "result": {
+     "trades": 63,
+     "return_pct": -4.72,
+     "max_drawdown_pct": 11.76,
+     "win_rate_pct": 33.3,
+     "profit_factor": 0.99,
+     "avg_trade": -0.38,
+     "final_equity": 9527.83,
+     "exits": {
+      "stop": 39,
+      "target": 17,
+      "trend_break": 7
+     },
+     "too_few_trades": false
+    }
+   },
+   "in_sample": {
+    "start": "2021-01-01 00:00",
+    "end": "2025-01-30 20:00",
+    "bars": 8946,
+    "warmup_bars_prepended": 0,
+    "result": {
+     "trades": 40,
+     "return_pct": 0.95,
+     "max_drawdown_pct": 5.38,
+     "win_rate_pct": 37.5,
+     "profit_factor": 1.21,
+     "avg_trade": 9.36,
+     "final_equity": 10095.35,
+     "exits": {
+      "stop": 24,
+      "target": 12,
+      "trend_break": 4
+     },
+     "too_few_trades": false
+    }
+   },
+   "out_of_sample": {
+    "start": "2025-01-31 00:00",
+    "end": "2026-10-31 20:00",
+    "bars": 3834,
+    "warmup_bars_prepended": 201,
+    "result": {
+     "trades": 23,
+     "return_pct": -5.62,
+     "max_drawdown_pct": 8.84,
+     "win_rate_pct": 26.1,
+     "profit_factor": 0.66,
+     "avg_trade": -17.15,
+     "final_equity": 9437.84,
+     "exits": {
+      "stop": 15,
+      "target": 5,
+      "trend_break": 3
+     },
+     "too_few_trades": true
+    }
+   }
+  }
+ },
+ "SOL": {
+  "params": {
+   "fast_ema": 50,
+   "slow_ema": 200,
+   "rsi_period": 14,
+   "rsi_dip": 40,
+   "rsi_entry": 50,
+   "dip_lookback": 6,
+   "atr_period": 14,
+   "stop_atr": 2.0,
+   "target_atr": 4.0,
+   "trail_atr": 3.0,
+   "risk_pct": 1.0,
+   "max_position_pct": 25.0
+  },
+  "fee_pct": 0.31,
+  "bars_total": 12780,
+  "split_index": 8946,
+  "split_bar": "2025-01-31 00:00",
+  "windows": {
+   "full": {
+    "start": "2021-01-01 00:00",
+    "end": "2026-10-31 20:00",
+    "bars": 12780,
+    "warmup_bars_prepended": 0,
+    "result": {
+     "trades": 79,
+     "return_pct": -10.97,
+     "max_drawdown_pct": 16.73,
+     "win_rate_pct": 26.6,
+     "profit_factor": 0.83,
+     "avg_trade": -8.73,
+     "final_equity": 8902.95,
+     "exits": {
+      "stop": 40,
+      "target": 19,
+      "trend_break": 20
+     },
+     "too_few_trades": false
+    }
+   },
+   "in_sample": {
+    "start": "2021-01-01 00:00",
+    "end": "2025-01-30 20:00",
+    "bars": 8946,
+    "warmup_bars_prepended": 0,
+    "result": {
+     "trades": 61,
+     "return_pct": -5.16,
+     "max_drawdown_pct": 10.23,
+     "win_rate_pct": 26.2,
+     "profit_factor": 0.93,
+     "avg_trade": -3.73,
+     "final_equity": 9484.43,
+     "exits": {
+      "stop": 29,
+      "target": 15,
+      "trend_break": 17
+     },
+     "too_few_trades": false
+    }
+   },
+   "out_of_sample": {
+    "start": "2025-01-31 00:00",
+    "end": "2026-10-31 20:00",
+    "bars": 3834,
+    "warmup_bars_prepended": 201,
+    "result": {
+     "trades": 18,
+     "return_pct": -6.13,
+     "max_drawdown_pct": 8.29,
+     "win_rate_pct": 27.8,
+     "profit_factor": 0.53,
+     "avg_trade": -27.09,
+     "final_equity": 9386.91,
+     "exits": {
+      "stop": 11,
+      "target": 4,
+      "trend_break": 3
+     },
+     "too_few_trades": true
+    }
+   }
+  }
+ },
+ "XAUUSD": {
+  "params": {
+   "fast_ema": 50,
+   "slow_ema": 200,
+   "rsi_period": 14,
+   "rsi_dip": 40,
+   "rsi_entry": 50,
+   "dip_lookback": 6,
+   "atr_period": 14,
+   "stop_atr": 1.5,
+   "target_atr": 3.0,
+   "trail_atr": 2.0,
+   "risk_pct": 0.5,
+   "max_position_pct": 3000
+  },
+  "fee_pct": 0.02,
+  "bars_total": 28585,
+  "split_index": 20009,
+  "split_bar": "2025-05-21 14:00",
+  "windows": {
+   "full": {
+    "start": "2022-01-02 23:00",
+    "end": "2026-10-30 20:00",
+    "bars": 28585,
+    "warmup_bars_prepended": 0,
+    "result": {
+     "trades": 164,
+     "return_pct": -6.76,
+     "max_drawdown_pct": 7.89,
+     "win_rate_pct": 35.4,
+     "profit_factor": 0.94,
+     "avg_trade": -1.62,
+     "final_equity": 9323.99,
+     "exits": {
+      "stop": 113,
+      "target": 43,
+      "trend_break": 8
+     },
+     "too_few_trades": false
+    }
+   },
+   "in_sample": {
+    "start": "2022-01-02 23:00",
+    "end": "2025-05-21 13:00",
+    "bars": 20009,
+    "warmup_bars_prepended": 0,
+    "result": {
+     "trades": 119,
+     "return_pct": -2.01,
+     "max_drawdown_pct": 5.61,
+     "win_rate_pct": 37.0,
+     "profit_factor": 1.04,
+     "avg_trade": 1.07,
+     "final_equity": 9798.93,
+     "exits": {
+      "stop": 80,
+      "target": 34,
+      "trend_break": 5
+     },
+     "too_few_trades": false
+    }
+   },
+   "out_of_sample": {
+    "start": "2025-05-21 14:00",
+    "end": "2026-10-30 20:00",
+    "bars": 8576,
+    "warmup_bars_prepended": 201,
+    "result": {
+     "trades": 45,
+     "return_pct": -4.85,
+     "max_drawdown_pct": 7.38,
+     "win_rate_pct": 31.1,
+     "profit_factor": 0.7,
+     "avg_trade": -8.91,
+     "final_equity": 9515.32,
+     "exits": {
+      "stop": 33,
+      "target": 9,
+      "trend_break": 3
+     },
+     "too_few_trades": false
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,142 @@
+{
+ "BTC": {
+  "full": {
+   "start": "2021-01-01 00:00",
+   "end": "2026-10-31 20:00",
+   "bars": 12780,
+   "warmup_bars_prepended": 0,
+   "return_pct": 166.57,
+   "max_drawdown_pct": 77.04,
+   "price_change_pct": 168.23,
+   "first_open": 28923.63,
+   "last_close": 77582.02
+  },
+  "in_sample": {
+   "start": "2021-01-01 00:00",
+   "end": "2025-01-30 20:00",
+   "bars": 8946,
+   "warmup_bars_prepended": 0,
+   "return_pct": 259.83,
+   "max_drawdown_pct": 77.04,
+   "price_change_pct": 262.07,
+   "first_open": 28923.63,
+   "last_close": 104722.94
+  },
+  "out_of_sample": {
+   "start": "2025-01-31 00:00",
+   "end": "2026-10-31 20:00",
+   "bars": 3834,
+   "warmup_bars_prepended": 201,
+   "return_pct": -26.38,
+   "max_drawdown_pct": 53.45,
+   "price_change_pct": -25.92,
+   "first_open": 104722.94,
+   "last_close": 77582.02
+  }
+ },
+ "ETH": {
+  "full": {
+   "start": "2021-01-01 00:00",
+   "end": "2026-10-31 20:00",
+   "bars": 12780,
+   "warmup_bars_prepended": 0,
+   "return_pct": 204.4,
+   "max_drawdown_pct": 81.12,
+   "price_change_pct": 206.3,
+   "first_open": 736.42,
+   "last_close": 2255.66
+  },
+  "in_sample": {
+   "start": "2021-01-01 00:00",
+   "end": "2025-01-30 20:00",
+   "bars": 8946,
+   "warmup_bars_prepended": 0,
+   "return_pct": 338.24,
+   "max_drawdown_pct": 81.12,
+   "price_change_pct": 340.97,
+   "first_open": 736.42,
+   "last_close": 3247.39
+  },
+  "out_of_sample": {
+   "start": "2025-01-31 00:00",
+   "end": "2026-10-31 20:00",
+   "bars": 3834,
+   "warmup_bars_prepended": 201,
+   "return_pct": -30.97,
+   "max_drawdown_pct": 68.03,
+   "price_change_pct": -30.54,
+   "first_open": 3247.38,
+   "last_close": 2255.66
+  }
+ },
+ "SOL": {
+  "full": {
+   "start": "2021-01-01 00:00",
+   "end": "2026-10-31 20:00",
+   "bars": 12780,
+   "warmup_bars_prepended": 0,
+   "return_pct": 6192.99,
+   "max_drawdown_pct": 96.6,
+   "price_change_pct": 6232.18,
+   "first_open": 1.5088,
+   "last_close": 95.54
+  },
+  "in_sample": {
+   "start": "2021-01-01 00:00",
+   "end": "2025-01-30 20:00",
+   "bars": 8946,
+   "warmup_bars_prepended": 0,
+   "return_pct": 15596.9,
+   "max_drawdown_pct": 96.6,
+   "price_change_pct": 15694.67,
+   "first_open": 1.5088,
+   "last_close": 238.31
+  },
+  "out_of_sample": {
+   "start": "2025-01-31 00:00",
+   "end": "2026-10-31 20:00",
+   "bars": 3834,
+   "warmup_bars_prepended": 201,
+   "return_pct": -60.16,
+   "max_drawdown_pct": 75.18,
+   "price_change_pct": -59.91,
+   "first_open": 238.3,
+   "last_close": 95.54
+  }
+ },
+ "XAUUSD": {
+  "full": {
+   "start": "2022-01-02 23:00",
+   "end": "2026-10-30 20:00",
+   "bars": 28585,
+   "warmup_bars_prepended": 0,
+   "return_pct": 111.8,
+   "max_drawdown_pct": 30.36,
+   "price_change_pct": 111.89,
+   "first_open": 1828.604,
+   "last_close": 3874.585
+  },
+  "in_sample": {
+   "start": "2022-01-02 23:00",
+   "end": "2025-05-21 13:00",
+   "bars": 20009,
+   "warmup_bars_prepended": 0,
+   "return_pct": 80.58,
+   "max_drawdown_pct": 21.88,
+   "price_change_pct": 80.65,
+   "first_open": 1828.604,
+   "last_close": 3303.455
+  },
+  "out_of_sample": {
+   "start": "2025-05-21 14:00",
+   "end": "2026-10-30 20:00",
+   "bars": 8576,
+   "warmup_bars_prepended": 201,
+   "return_pct": 17.24,
+   "max_drawdown_pct": 30.36,
+   "price_change_pct": 17.29,
+   "first_open": 3303.435,
+   "last_close": 3874.585
+  }
+ }
+}

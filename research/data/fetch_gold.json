@@ -1,0 +1,366 @@
+{
+ "missing_months": [],
+ "checks": {
+  "2022-01": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2022-02": {
+   "records": 672,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2022-03": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2022-04": {
+   "records": 720,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2022-05": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2022-06": {
+   "records": 720,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2022-07": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2022-08": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2022-09": {
+   "records": 720,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2022-10": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2022-11": {
+   "records": 720,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2022-12": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2023-01": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2023-02": {
+   "records": 672,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2023-03": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2023-04": {
+   "records": 720,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2023-05": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2023-06": {
+   "records": 720,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2023-07": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2023-08": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2023-09": {
+   "records": 720,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2023-10": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2023-11": {
+   "records": 720,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2023-12": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2024-01": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2024-02": {
+   "records": 696,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2024-03": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2024-04": {
+   "records": 720,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2024-05": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2024-06": {
+   "records": 720,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2024-07": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2024-08": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2024-09": {
+   "records": 720,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2024-10": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2024-11": {
+   "records": 720,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2024-12": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2025-01": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2025-02": {
+   "records": 672,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2025-03": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2025-04": {
+   "records": 720,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2025-05": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2025-06": {
+   "records": 720,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2025-07": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2025-08": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2025-09": {
+   "records": 720,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2025-10": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2025-11": {
+   "records": 720,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2025-12": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2026-01": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2026-02": {
+   "records": 672,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2026-03": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2026-04": {
+   "records": 720,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2026-05": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2026-06": {
+   "records": 720,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2026-07": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2026-08": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2026-09": {
+   "records": 720,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  },
+  "2026-10": {
+   "records": 744,
+   "increasing": true,
+   "hourly_offsets": true,
+   "inside_month": true
+  }
+ },
+ "source": "Dukascopy datafeed, BID_candles_hour_1.bi5 per month (XAUUSD, UTC)",
+ "records": 42360,
+ "bad_ohlc_order": 0,
+ "raw_median_close": 2345634,
+ "price_scale": 1000,
+ "flat_zero_volume_dropped": 13775,
+ "zero_volume_but_moving_kept": 0,
+ "duplicates_dropped": 0,
+ "rows": 28585,
+ "price_min": 1614.71,
+ "price_max": 5596.805,
+ "outside_plausible_range": 632,
+ "all_months_ok": true
+}
