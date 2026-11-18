@@ -421,6 +421,17 @@ def parse_gold():
     return {k: v for k, v in info.items() if k != "checks"}
 
 
+def fetch_gold():
+    """Skip when parsed gold data already exists (e.g. seeded from research/data);
+    otherwise download with a time limit (GOLD_DEADLINE seconds, default 1500)."""
+    if (BASE / "data" / MARKETS["XAUUSD"]["csv"]).exists() and load_json("fetch_gold.json"):
+        return "gold data already present; download skipped"
+    prog = fetch_gold_raw(deadline=float(os.environ.get("GOLD_DEADLINE", 1500)))
+    if not prog.get("done"):
+        raise RuntimeError(f"gold download incomplete after the deadline: {gold_status()}")
+    return parse_gold()
+
+
 # ----------------------------------------------------------------------------- data description
 
 def describe():
@@ -779,7 +790,7 @@ def grid_matrix(name):
 
 STEPS = {
     "fetch-crypto": fetch_crypto,
-    "fetch-gold": lambda: (fetch_gold_raw(), parse_gold())[1],
+    "fetch-gold": lambda: fetch_gold(),
     "describe": describe,
     "baseline": baseline,
     "benchmark": benchmark,

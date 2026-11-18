@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: write
+  actions: read
 
 concurrency:
   group: backtest
@@ -33,6 +34,23 @@ jobs:
           path: bt/raw
           key: bt-raw-${{ github.run_id }}
           restore-keys: bt-raw-
+      - name: Seed history from the repo snapshot
+        run: |
+          mkdir -p bt/data bt/results
+          if ls research/data/*.csv >/dev/null 2>&1; then
+            cp research/data/*.csv bt/data/ && cp research/data/fetch_*.json bt/results/
+          fi
+      - name: Seed history from the 2026-11-05 run (one-off, until research/data exists)
+        if: hashFiles('research/data/*.csv') == ''
+        uses: actions/download-artifact@v4
+        with:
+          name: backtest-41986557897
+          run-id: 41986557897
+          github-token: ${{ github.token }}
+          path: bt-prev
+      - name: Use seeded artifact
+        if: hashFiles('research/data/*.csv') == ''
+        run: cp bt-prev/data/*.csv bt/data/ && cp bt-prev/results/fetch_*.json bt/results/
       - name: Run backtests
         env:
           DUKA_PAUSE: "5"
@@ -49,6 +67,7 @@ jobs:
           python research/make_report.py --base bt --out "$out"
           cp bt/results/*.json "$out/"
           rm -f "$out/baseline_trades.json"
+          mkdir -p research/data && cp bt/data/*.csv bt/results/fetch_*.json research/data/
           echo "REPORT_DIR=$out" >> "$GITHUB_ENV"
           cat "$out/report.md"
       - uses: actions/upload-artifact@v4
@@ -62,7 +81,7 @@ jobs:
         run: |
           git config user.name "trader-bot"
           git config user.email "trader-bot@users.noreply.github.com"
-          git add research/backtests
+          git add research/backtests research/data
           git diff --cached --quiet && exit 0
           git commit -m "Backtest report $(date -u +%F)"
           for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done
