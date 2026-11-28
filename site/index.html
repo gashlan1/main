@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hemline</title>
+<meta name="description" content="Hemline is a hub for independent clothing and fashion designers: profiles, pieces and a small number of exclusive seasonal spots.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Archivo:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#view">Skip to content</a>
+<div class="cursor-glow" aria-hidden="true"></div>
+
+<header class="top" id="top">
+  <div class="top-inner">
+    <a class="brand" href="#home" data-route="home"><span class="brand-mark" aria-hidden="true"></span><span class="brand-name">Hemline</span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#designers" data-route="designers">Designers</a>
+      <a href="#pieces" data-route="pieces">Pieces</a>
+      <a href="#exclusive" data-route="exclusive" class="nav-exclusive">Exclusive spots <span class="nav-dot" id="nav-open-count"></span></a>
+      <a href="#join" data-route="join" class="nav-join">Join</a>
+    </nav>
+    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Primary mobile" hidden>
+    <a href="#home" data-route="home">Home</a>
+    <a href="#designers" data-route="designers">Designers</a>
+    <a href="#pieces" data-route="pieces">Pieces</a>
+    <a href="#exclusive" data-route="exclusive">Exclusive spots</a>
+    <a href="#join" data-route="join">Join as a designer</a>
+  </nav>
+</header>
+
+<main id="view" class="view" tabindex="-1"></main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <span class="brand-name">Hemline</span>
+      <p id="foot-tagline"></p>
+    </div>
+    <div class="foot-col">
+      <span class="eyebrow">Browse</span>
+      <a href="#designers">Designers</a>
+      <a href="#pieces">Pieces</a>
+      <a href="#exclusive">Exclusive spots</a>
+    </div>
+    <div class="foot-col">
+      <span class="eyebrow">Designers</span>
+      <a href="#join">Apply to join</a>
+      <a href="#exclusive">Take a spot</a>
+    </div>
+    <div class="foot-col">
+      <span class="eyebrow">Contact</span>
+      <span class="copyable" id="foot-email"></span>
+      <span id="foot-ig"></span>
+    </div>
+  </div>
+  <div class="foot-line"><span id="foot-season"></span><span>Independent designers, shown properly.</span></div>
+</footer>
+
+<div class="lookbook" id="lookbook" role="dialog" aria-modal="true" aria-label="Piece" hidden></div>
+
+<script src="data/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

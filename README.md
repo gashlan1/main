@@ -1,5 +1,7 @@
 # Trading bots
 
+This repo also holds **Hemline**, a static designer hub website in `site/` (see `site/README.md`).
+
 Three autonomous bots, all **paper/demo by default**, each with hard risk limits and a kill switch.
 
 | Bot | Market | Runs on | Code | Settings |
